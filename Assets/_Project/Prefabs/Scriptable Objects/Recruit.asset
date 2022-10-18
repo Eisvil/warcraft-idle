@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae37d2dfe29b0d42b71563b817b1e5a, type: 3}
+  m_Name: Recruit
+  m_EditorClassIdentifier: 
+  Id: 0
+  BasicStats:
+  - Health: 3
+    Damage: 2
+    CritChance: 2
+    CritMultiplier: 1.5
+    AttackSpeed: 0.95
+    AttackRange: 1
+    MoveSpeed: 1
+  PoolSize: 02000000
+  UnitsSpawnTime:
+  - 1
+  PlayerTemplates:
+  - {fileID: 4081168214690971880, guid: 52f6ca8ceb78b6a4480ac7f749622a48, type: 3}
+  EnemyTemplates:
+  - {fileID: 5845039259423760017, guid: 30a900b51a3b0674295e8c3b8aab8d72, type: 3}
