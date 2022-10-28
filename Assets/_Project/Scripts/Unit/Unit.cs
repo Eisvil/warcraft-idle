@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +10,12 @@ public abstract class Unit : DamageableObject
 {
     [SerializeField] private UnitRace _race;
     
-    private AttackZone _attackZone;
+    protected AttackZone AttackZone;
     
-    public UnitStateMachine StateMachine { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
-    public DamageableObject Target { get; private set; }
+    public UnitStateMachine StateMachine { get; private set; }
+    public Animator Animator { get; private set; }
+    public DamageableObject Target { get; protected set; }
     public int Id { get; private set; }
     public UnitStats Stats { get; protected set; }
     public UnitRace Race => _race;
@@ -22,7 +24,8 @@ public abstract class Unit : DamageableObject
     {
         Rigidbody = GetComponent<Rigidbody>();
         StateMachine = GetComponentInChildren<UnitStateMachine>();
-        _attackZone = GetComponentInChildren<AttackZone>();
+        Animator = GetComponent<Animator>();
+        AttackZone = GetComponentInChildren<AttackZone>();
     }
 
     public virtual void Init(int id, UnitStats stats, bool isEnemy)
@@ -32,16 +35,20 @@ public abstract class Unit : DamageableObject
         Health = Stats.Health;
         _isEnemy = isEnemy;
         
-        _attackZone.Init(this, Stats.AttackRange);
+        AttackZone.Init(this, Stats.AttackRange);
+        
+        TryFindNextTarget();
     }
 
-    protected virtual void RemoveTarget(DamageableObject unit)
+    protected virtual void RemoveTarget(DamageableObject target)
     {
-        unit.IsDied -= RemoveTarget;
+        target.IsDied -= RemoveTarget;
 
         Target = null;
-            
-        StateMachine.SetState(UnitState.Idle);
+        
+        AttackZone.RemoveTarget(target);
+        
+        TryFindNextTarget();
     }
     
     public override void TakeDamage(float damage)
@@ -52,11 +59,6 @@ public abstract class Unit : DamageableObject
         {
             Die();
         }
-    }
-
-    public void Attack()
-    {
-        Target.TakeDamage(Stats.Damage);
     }
 
     public void TrySetTarget(DamageableObject target)
@@ -74,6 +76,20 @@ public abstract class Unit : DamageableObject
         Target.IsDied += RemoveTarget;
         
         StateMachine.SetState(UnitState.Move);
+    }
+
+    public virtual void TryFindNextTarget()
+    {
+        if(Target != null) return;
+        
+        if (AttackZone.Targets.Count >= 1)
+        {
+            TrySetTarget(AttackZone.Targets.First());
+        }
+        else
+        {
+            StateMachine.SetState(UnitState.Idle);
+        }
     }
 
     public void StartAttacking()

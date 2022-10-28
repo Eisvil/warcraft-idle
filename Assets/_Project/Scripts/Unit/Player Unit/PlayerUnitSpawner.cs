@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerUnitSpawner : UnitPool<PlayerUnit>
 {
-    [SerializeField] private Castle _castle;
     [SerializeField] private Transform _spawnPoint;
 
     private float[] _unitsSpawnTime;

@@ -29,24 +29,25 @@ public class AttackZone : MonoBehaviour
 
         if (target.IsEnemy == _unit.IsEnemy) return;
         
-        target.IsDied += OnTargetDied;
+        target.IsDied += RemoveTarget;
         _targets.Add(target);
         _unit.StartAttacking();
     }
     
     private void OnTriggerExit(Collider other)
     {
-        if (!other.TryGetComponent(out Unit unit)) return;
+        if (!other.TryGetComponent(out DamageableObject target)) return;
 
-        if (unit.IsEnemy == _unit.IsEnemy) return;
+        if (!_targets.Contains(target)) return;
         
-        unit.IsDied -= OnTargetDied;
-        _targets.Remove(unit);
+        RemoveTarget(target);
     }
     
-    private void OnTargetDied(DamageableObject target)
+    public void RemoveTarget(DamageableObject target)
     {
-        target.IsDied -= OnTargetDied;
+        if(!_targets.Contains(target)) return;
+        
+        target.IsDied -= RemoveTarget;
         _targets.Remove(target);
     }
 }

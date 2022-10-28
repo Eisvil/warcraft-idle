@@ -25,6 +25,6 @@ MonoBehaviour:
   UnitsSpawnTime:
   - 1
   PlayerTemplates:
-  - {fileID: 4081168214690971880, guid: 52f6ca8ceb78b6a4480ac7f749622a48, type: 3}
+  - {fileID: 4961184491632592710, guid: 52f6ca8ceb78b6a4480ac7f749622a48, type: 3}
   EnemyTemplates:
-  - {fileID: 5845039259423760017, guid: 30a900b51a3b0674295e8c3b8aab8d72, type: 3}
+  - {fileID: 6530524750487035075, guid: 30a900b51a3b0674295e8c3b8aab8d72, type: 3}

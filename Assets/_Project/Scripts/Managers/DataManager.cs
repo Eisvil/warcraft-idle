@@ -34,8 +34,13 @@ public class DataManager : Singleton<DataManager>
 [Serializable]
 public class Data
 {
+    public int Gold;
+    public int Gem;
+    public int CurrentLevel;
+
     public Data()
     {
-        
+        Gold = 0;
+        Gem = 0;
     }
 }

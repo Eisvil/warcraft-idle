@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerUnit : Unit
 {
     private Castle Castle => BattleManager.Instance.Castle;
 
-    protected override void RemoveTarget(DamageableObject unit)
+    public override void TryFindNextTarget()
     {
-        base.RemoveTarget(unit);
+        if (AttackZone.Targets.Count >= 1)
+        {
+            TrySetTarget(AttackZone.Targets.First());
+        }
+        else
+        {
+            var target = Castle.BattleZone.GetClosestEnemy(transform.position);
 
-        var closestEnemy = Castle.BattleZone.GetClosestEnemy(transform.position);
-        
-        if(closestEnemy == null) return;
-        
-        TrySetTarget(closestEnemy);
+            if (target != null)
+            {
+                TrySetTarget(target);
+            }
+            else
+            {
+                StateMachine.SetState(UnitState.Idle);
+            }
+        }
     }
 }

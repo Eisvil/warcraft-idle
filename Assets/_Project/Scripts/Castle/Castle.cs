@@ -13,6 +13,8 @@ public class Castle : DamageableObject
     private void Awake()
     {
         BattleZone = GetComponentInChildren<BattleZone>();
+        BattleZone.Init(this);
+        
         Health = 100;
     }
 
