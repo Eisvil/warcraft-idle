@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 490042646614871980}
   - component: {fileID: 1144961413897705981}
   - component: {fileID: 7539590400458189906}
-  - component: {fileID: 5989407180713010665}
-  - component: {fileID: 1843202291745118366}
+  - component: {fileID: 1796686540470234801}
+  - component: {fileID: 3805494684570529741}
   - component: {fileID: 8874535329638865884}
   m_Layer: 0
-  m_Name: Unit State Machine
+  m_Name: Enemy State Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 0
   _exitState: 0
---- !u!114 &5989407180713010665
+--- !u!114 &1796686540470234801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,13 +72,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6210564422620824989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480be94567145bd4893eb4624a64a4d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eaccce7b17e4affa849463a6bd107f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 1
   _exitState: 0
-  _speed: 1
---- !u!114 &1843202291745118366
+  _speed: 2
+--- !u!114 &3805494684570529741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6210564422620824989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cf25be13eac894ea8396bb4595d66b, type: 3}
+  m_Script: {fileID: 11500000, guid: b5e6951bf37149bba5149e2867d66b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 2

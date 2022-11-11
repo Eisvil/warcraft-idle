@@ -4,43 +4,35 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Castle : DamageableObject
+public class Castle : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerUnitSpawner _playerUnitSpawner;
+    [SerializeField] private BattleZone _battleZone;
+    
+    private float _health;
 
-    public BattleZone BattleZone { get; private set; }
+    public BattleZone BattleZone => _battleZone;
 
-    private void Awake()
+    private void Start()
     {
-        BattleZone = GetComponentInChildren<BattleZone>();
-        BattleZone.Init(this);
+        Init();
+    }
+
+    public void Init()
+    {
+        _health = 100;
+    }
+
+    public void Die()
+    {
         
-        Health = 100;
     }
 
-    private void OnEnable()
+    public void TakeDamage(float damage)
     {
-        BattleZone.IsEnemyEntered += TryTargetEnemy;
-    }
-
-    private void OnDisable()
-    {
-        BattleZone.IsEnemyEntered -= TryTargetEnemy;
-    }
-
-    private void TryTargetEnemy(DamageableObject enemy)
-    {
-        foreach (var unit in _playerUnitSpawner.GetActiveUnits())
-        {
-            unit.TrySetTarget(enemy);
-        }
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        Health -= damage;
+        _health -= damage;
         
-        if(Health <= 0)
+        if(_health <= 0)
             Die();
     }
 }

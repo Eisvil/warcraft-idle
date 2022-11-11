@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8299289147093743044}
   - component: {fileID: 2276251953593471512}
   - component: {fileID: 7925906850961017575}
-  - component: {fileID: 7756896214336548624}
+  - component: {fileID: 1878737843183155274}
   m_Layer: 5
-  m_Name: Menu Button
+  m_Name: Main Screen Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7756896214336548624}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+      - m_Target: {fileID: 1878737843183155274}
+        m_TargetAssemblyTypeName: MainScreenMenuButton, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 6
         m_Arguments:
@@ -136,7 +136,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &7756896214336548624
+--- !u!114 &1878737843183155274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,14 +145,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 673291202110384449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 482453a768e660241a6246e2cfd2950a, type: 3}
+  m_Script: {fileID: 11500000, guid: 780c1187634b4589a9f0c4eb4d7beadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 5389416374771079479}
-  _name: {fileID: 7608317758189440776}
   _animationDuration: 0.25
   _selectedSize: {x: 340, y: 185}
   _deselectedSize: {x: 185, y: 185}
+  _name: {fileID: 7608317758189440776}
   _selectedIconPosition: {x: 0, y: 75}
   _deselectedIconPosition: {x: 0, y: 25}
 --- !u!1 &4849680518612473591

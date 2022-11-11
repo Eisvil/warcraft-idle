@@ -14,5 +14,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         _playerUnitSpawner.Init();
         _enemyUnitSpawner.Init();
+        
+        UIManager.Instance.GameplayScreen.Enable();
     }
 }

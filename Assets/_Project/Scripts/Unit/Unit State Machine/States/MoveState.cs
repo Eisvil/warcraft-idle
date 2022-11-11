@@ -1,32 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class MoveState : State
 {
-    [SerializeField] private float _speed;
+    [SerializeField] protected float _speed;
 
-    private void MoveToTarget()
+    protected virtual void MoveToTarget()
     {
-        if (Unit.Target == null)
-        {
-            Exit();
-        }
-        
         var targetPosition = Unit.Target.transform.position;
         var direction =  (targetPosition - Unit.transform.position).normalized;
-        
-        Unit.transform.LookAt(new Vector3(targetPosition.x, Unit.transform.position.y, targetPosition.z));
-        
+
         Unit.Rigidbody.velocity = direction * _speed;
     }
 
     public override void Enter()
     {
         base.Enter();
-        
+
         Unit.Animator.SetBool("Is_Moving", true);
+
+        Unit.LookAtTarget();
     }
+
+    public override void UpdateHandle() {}
 
     public override void FixedUpdateHandle()
     {

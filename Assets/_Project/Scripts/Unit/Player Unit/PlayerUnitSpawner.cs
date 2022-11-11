@@ -53,5 +53,6 @@ public class PlayerUnitSpawner : UnitPool<PlayerUnit>
         unit.Reset();
         unit.transform.position = _spawnPoint.position;
         unit.gameObject.SetActive(true);
+        unit.TryFindTarget();
     }
 }

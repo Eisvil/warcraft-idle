@@ -1,42 +1,34 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class AttackState : State
 {
-    private float _timer;
-
-    private void Attack()
+    protected virtual void Attack()
     {
-        if (Unit.Target == null)
-        {
-            Exit();
-        }
-        
         Unit.Target.TakeDamage(Unit.Stats.Damage);
     }
-    
+
     public override void Enter()
     {
         base.Enter();
 
-        _timer = 0;
+        Unit.AnimationEvents.IsAttacking += Attack;
         
         Unit.Animator.SetBool("Is_Attacking", true);
+
+        Unit.LookAtTarget();
     }
 
-    public override void UpdateHandle()
-    {
-        _timer += Time.deltaTime;
+    public override void UpdateHandle() {}
 
-        if (!(_timer >= 1 / Unit.Stats.AttackSpeed)) return;
-        
-        Attack();
-        _timer = 0f;
-    }
+    public override void FixedUpdateHandle() {}
 
     public override void Exit()
     {
-        Unit.Animator.SetBool("Is_Attacking", false);
+        Unit.AnimationEvents.IsAttacking -= Attack;
         
+        Unit.Animator.SetBool("Is_Attacking", false);
+
         base.Exit();
     }
 }

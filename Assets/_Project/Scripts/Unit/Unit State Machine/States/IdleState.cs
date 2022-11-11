@@ -6,4 +6,8 @@ public class IdleState : State
     {
         base.Enter();
     }
+
+    public override void UpdateHandle() {}
+
+    public override void FixedUpdateHandle() {}
 }

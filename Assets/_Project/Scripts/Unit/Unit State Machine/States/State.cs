@@ -23,10 +23,10 @@ public abstract class State : MonoBehaviour
     {
         IsEnabled = true;
     }
-    
-    public virtual void UpdateHandle() { }
 
-    public virtual void FixedUpdateHandle() { }
+    public abstract void UpdateHandle();
+
+    public abstract void FixedUpdateHandle();
 
     public virtual void Exit()
     {

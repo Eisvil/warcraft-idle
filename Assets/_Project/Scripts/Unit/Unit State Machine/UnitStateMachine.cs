@@ -26,11 +26,6 @@ public class UnitStateMachine : MonoBehaviour
         }
     }
 
-    /*private void Start()
-    {
-        Reset();
-    }*/
-
     private void Update()
     {
         if (_currentState != null)
@@ -49,13 +44,15 @@ public class UnitStateMachine : MonoBehaviour
 
     public void Reset()
     {
-        SetState(_startState);
+        SetState(_startState, true);
     }
 
-    public void SetState(UnitState stateName)
+    public void SetState(UnitState stateName, bool isReset = false)
     {
         if (_currentState != null)
         {
+            if(CurrentState == UnitState.Die && !isReset) return;
+            
             if(_currentState.IsEnabled)
                 _currentState.Exit();
         }

@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class EnemyUnitSpawner : UnitPool<EnemyUnit>
 {
-    [SerializeField] private DamageableObject _playerCastle;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private float _spawnTime;
 
@@ -46,6 +45,6 @@ public class EnemyUnitSpawner : UnitPool<EnemyUnit>
         unit.Reset();
         unit.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
         unit.gameObject.SetActive(true);
-        unit.TrySetTarget(_playerCastle);
+        unit.TryFindTarget();
     }
 }

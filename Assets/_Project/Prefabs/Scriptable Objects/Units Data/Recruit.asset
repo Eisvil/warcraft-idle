@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   BasicStats:
-  - Health: 3
+  - MaxHealth: 3
     Damage: 2
     CritChance: 2
     CritMultiplier: 1.5
