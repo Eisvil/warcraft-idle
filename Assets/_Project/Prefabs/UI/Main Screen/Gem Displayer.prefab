@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6302911826792072627}
   - component: {fileID: 6302911826792072626}
   - component: {fileID: 6302911826792072625}
-  - component: {fileID: 1835185162885497520}
+  - component: {fileID: 4724539333113138902}
   m_Layer: 5
   m_Name: Gem Displayer
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1835185162885497520
+--- !u!114 &4724539333113138902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6302911826792072622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4561689b05a64529a2932ef706f34baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 87f1f040ad114302b1b5212b20b82bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: {fileID: 6302911828420513095}
 --- !u!1 &6302911827027984878
 GameObject:
   m_ObjectHideFlags: 0

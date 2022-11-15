@@ -34,13 +34,14 @@ public class DataManager : Singleton<DataManager>
 [Serializable]
 public class Data
 {
-    public int Gold;
+    public float Gold;
     public int Gem;
-    public int CurrentLevel;
+    public int[] PermanentPerkLevels;
 
     public Data()
     {
-        Gold = 0;
+        Gold = 0f;
         Gem = 0;
+        PermanentPerkLevels = new int[Enum.GetNames(typeof(PerkName)).Length];
     }
 }

@@ -8,11 +8,11 @@ public class EnemyUnit : Unit
 {
     [SerializeField] private EnemyTriggerZone _enemyTriggerZone;
 
-    public override void Init(int id, UnitStats stats, bool isEnemy)
+    public override void Init(int id, UnitStats basicStats, bool isEnemy)
     {
-        base.Init(id, stats, isEnemy);
+        base.Init(id, basicStats, isEnemy);
         
-        _enemyTriggerZone.Init(stats.AttackRange * 5f);
+        _enemyTriggerZone.Init(basicStats.AttackRange * 5f);
     }
 
     private void OnEnable()

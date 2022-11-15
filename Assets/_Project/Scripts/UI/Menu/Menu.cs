@@ -29,11 +29,5 @@ public abstract class Menu : MonoBehaviour
         }
     }
 
-    protected virtual void OnSelecting(MenuButton button, bool isAnimationNeeded)
-    {
-        foreach (var menuButton in MenuButtons.Where(menuButton => menuButton != button))
-        {
-            menuButton.Deselect(isAnimationNeeded);
-        }
-    }
+    protected abstract void OnSelecting(MenuButton button, bool isAnimationNeeded);
 }

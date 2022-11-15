@@ -3,42 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class EnemyUnitSpawner : UnitPool<EnemyUnit>
+public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private float _spawnTime;
+    [SerializeField] private int _poolSize;
 
     private float _timer;
 
-    public void Init()
+    public void Init(WaveData waveData)
     {
-        SelectedIds = PlayerDeckManager.Instance.SelectedUnitsId;
-        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetEnemyUnit(unitId, UnitRace.Human)).ToList();
-        PoolSizes = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetUnitPoolSize(unitId, 0)).ToList();
+        SelectedIds = waveData.UnitIds;
+        SelectedUnitLevels = waveData.UnitLevels;
+        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetEnemyUnit(unitId, UnitRace.Undead)).ToList();
+
+        PoolSizes = new List<int>();
+        
+        for (var i = 0; i < SelectedIds.Length; i++)
+        {
+            PoolSizes.Add(_poolSize);
+        }
+
+        UnitsSpawnTime = waveData.UnitsSpawnTime;
+        UnitsTimer = new float[UnitsSpawnTime.Length];
 
         InitPool();
     }
-    
-    private void Update()
+
+    private void OnUnitDying(Unit unit)
     {
-        CountDown();
+        unit.IsDying -= OnUnitDying;
+        
+        Wallet.Instance.AddExp(LevelManager.Instance.CurrentWave.ExpReward);
+        Wallet.Instance.AddGold(LevelManager.Instance.CurrentWave.GoldReward);
     }
 
-    private void CountDown()
-    {
-        if(GetCountOfInactiveUnits(0) == 0) return;
-        
-        _timer += Time.deltaTime;
-
-        if (!(_timer >= _spawnTime)) return;
-        
-        SpawnUnit(0);
-        _timer = 0;
-    }
-    
-    private void SpawnUnit(int id)
+    protected override void SpawnUnit(int id)
     {
         var unit = TryGetUnit(id);
         
@@ -46,5 +48,6 @@ public class EnemyUnitSpawner : UnitPool<EnemyUnit>
         unit.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
         unit.gameObject.SetActive(true);
         unit.TryFindTarget();
+        unit.IsDying += OnUnitDying;
     }
 }

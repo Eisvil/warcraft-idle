@@ -6,7 +6,10 @@ public class MainScreen : UIScreen
 {
     public void Play()
     {
+        LevelManager.Instance.SelectLevel(0);
+        
         BattleManager.Instance.StartBattle();
-        Disable();
+        
+        Hide();
     }
 }

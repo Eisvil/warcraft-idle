@@ -35,7 +35,7 @@ public abstract class MenuButton : MonoBehaviour
         IsSelecting?.Invoke(this, isAnimationNeeded);
     }
     
-    public virtual void Deselect(bool isAnimationNeeded = true)
+    public virtual void Deselect(bool isAnimationNeeded = true, bool isDeselectYourself = false)
     {
         IsDeselecting?.Invoke(this, isAnimationNeeded);
     }

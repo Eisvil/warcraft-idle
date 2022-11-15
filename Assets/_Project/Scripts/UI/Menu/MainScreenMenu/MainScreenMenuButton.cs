@@ -30,7 +30,7 @@ public class MainScreenMenuButton : MenuButton
         base.Select(isAnimationNeeded);
     }
     
-    public override void Deselect(bool isAnimationNeeded = true)
+    public override void Deselect(bool isAnimationNeeded = true, bool isDeselectYourself = false)
     {
         if(!IsSelected) return;
         
