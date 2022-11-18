@@ -148,11 +148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 5493358326398649371}
-  _animationDuration: 0.25
+  _animationDuration: 0.3
   _selectedSize: {x: 350, y: 140}
   _deselectedSize: {x: 350, y: 125}
   _selectedIconScale: {x: 1.15, y: 1.15, z: 1.15}
   _deselectedIconScale: {x: 1, y: 1, z: 1}
+  _isDeselectYourself: 0
 --- !u!1 &5934430923917632569
 GameObject:
   m_ObjectHideFlags: 0

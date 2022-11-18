@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 5389416374771079479}
-  _animationDuration: 0.25
+  _animationDuration: 0.2
   _selectedSize: {x: 340, y: 185}
   _deselectedSize: {x: 185, y: 185}
   _name: {fileID: 7608317758189440776}

@@ -119,6 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407364f81d89450c829a5baec74c3569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelsRectTransform: []
+  MovePoints: []
+  _scrollSpeed: 0.3
+  _cameraMover: {fileID: 0}
+  _perkPanelsContainer: {fileID: 0}
+  _needSelectFromStart: 0
 --- !u!1001 &677242707959639103
 PrefabInstance:
   m_ObjectHideFlags: 0

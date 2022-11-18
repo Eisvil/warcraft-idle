@@ -13,6 +13,7 @@ public class Castle : MonoBehaviour, IDamageable
     private float _currentHealth;
     private float _regenPerSecond;
     private float _timer;
+    private bool _isMaxHealth;
 
     public BattleZone BattleZone => _battleZone;
     public float MaxHealth => _maxHealth;
@@ -44,7 +45,15 @@ public class Castle : MonoBehaviour, IDamageable
 
     private void Regen()
     {
-        if(_currentHealth >= _maxHealth) return;
+        if(_isMaxHealth) return;
+        
+        if (_currentHealth >= _maxHealth)
+        {
+            _isMaxHealth = true;
+            _currentHealth = _maxHealth;
+            
+            IsHealthChanged?.Invoke(true);
+        }
 
         _timer += Time.deltaTime;
 
@@ -85,6 +94,8 @@ public class Castle : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+
+        _isMaxHealth = false;
         
         IsHealthChanged?.Invoke(true);
         

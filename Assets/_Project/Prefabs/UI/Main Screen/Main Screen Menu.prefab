@@ -81,6 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38de5fc2d2d4a568f57064f50bd0b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelsRectTransform: []
+  MovePoints: []
+  _scrollSpeed: 0.2
 --- !u!1001 &300160118169093333
 PrefabInstance:
   m_ObjectHideFlags: 0
