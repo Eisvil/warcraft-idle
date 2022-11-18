@@ -46,6 +46,13 @@ public class BattleManager : Singleton<BattleManager>
         
         Wallet.Instance.ResetExp();
     }
-    
-    
+
+    public void LoseBattle()
+    {
+        IsBattleGoing = false;
+
+        Time.timeScale = 1f;
+        
+        UIManager.Instance.LoseScreen.Show();
+    }
 }

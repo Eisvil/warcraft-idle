@@ -88,7 +88,7 @@ public class Castle : MonoBehaviour, IDamageable
     
     public void Die()
     {
-        
+        BattleManager.Instance.LoseBattle();
     }
 
     public void TakeDamage(float damage)
