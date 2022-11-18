@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TemporaryPerkUpgradeButton : PerkUpgradeButton
 {
-    protected override void ShowPriceAndLevel()
+    public override void ShowPriceAndStats()
     {
         CurrentPrice = PerkManager.Instance.GetPerkPriceForExp(PerkData.Id);
 
@@ -37,6 +37,6 @@ public class TemporaryPerkUpgradeButton : PerkUpgradeButton
         
         PerkManager.Instance.UpgradeTemporaryPerk(PerkData.Id);
             
-        ShowPriceAndLevel();
+        ShowPriceAndStats();
     }
 }

@@ -20,4 +20,12 @@ public class PerkPanel : MonoBehaviour
             _upgradeButtons[i].gameObject.SetActive(false);
         }
     }
+
+    public void ShowLevelsAndPrices(PerkData[] perksData)
+    {
+        for (var i = 0; i < perksData.Length; i++)
+        {
+            _upgradeButtons[i].ShowPriceAndStats();
+        }
+    }
 }

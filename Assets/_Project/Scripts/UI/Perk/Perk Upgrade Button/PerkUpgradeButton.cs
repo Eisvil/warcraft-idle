@@ -29,7 +29,7 @@ public abstract class PerkUpgradeButton : MonoBehaviour
         _name.text = perkData.Name;
         _icon.sprite = perkData.Icon;
 
-        ShowPriceAndLevel();
+        ShowPriceAndStats();
     }
 
     private void OnEnable()
@@ -42,7 +42,7 @@ public abstract class PerkUpgradeButton : MonoBehaviour
         _button.onClick.RemoveListener(TryUpgradePerk);
     }
 
-    protected abstract void ShowPriceAndLevel();
+    public abstract void ShowPriceAndStats();
 
     public abstract void TryUpgradePerk();
 }

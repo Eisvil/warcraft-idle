@@ -10,14 +10,15 @@ public class UnitHealthBar : Bar
     private float MaxHealth => _unit.Stats.MaxHealth;
     private float CurrentHealth => _unit.Health;
 
-    private void OnEnable()
+    protected override void Awake()
     {
-        Show(CurrentHealth, MaxHealth, false);
+        base.Awake();
+        
         _unit.IsHealthChanged += OnHealthChanged;
     }
 
-    private void OnDisable()
-    {
+    private void OnDestroy()
+    { 
         _unit.IsHealthChanged -= OnHealthChanged;
     }
 

@@ -10,6 +10,13 @@ public class DataManager : Singleton<DataManager>
     
     public Data Data;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        StartCoroutine(Load());
+    }
+
     public IEnumerator Load()
     {
         if(_isLoaded) yield break;

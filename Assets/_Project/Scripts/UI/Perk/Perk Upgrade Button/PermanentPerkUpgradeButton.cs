@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PermanentPerkUpgradeButton : PerkUpgradeButton
 {
-    protected override void ShowPriceAndLevel()
+    public override void ShowPriceAndStats()
     {
         CurrentPrice = PerkManager.Instance.GetPerkPriceForGold(PerkData.Id);
 
@@ -36,6 +36,6 @@ public class PermanentPerkUpgradeButton : PerkUpgradeButton
         
         PerkManager.Instance.UpgradePermanentPerk(PerkData.Id);
             
-        ShowPriceAndLevel();
+        ShowPriceAndStats();
     }
 }

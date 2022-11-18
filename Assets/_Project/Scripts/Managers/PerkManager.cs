@@ -86,6 +86,24 @@ public class PerkManager : Singleton<PerkManager>
         return _pricesForExp[GetTemporaryPerkLevel(perkName)];
     }
 
+    public void UpdateStats()
+    {
+        foreach (var perkPanel in _attackPerkPanels)
+        {
+            perkPanel.ShowLevelsAndPrices(_attackPerks);
+        }
+        
+        foreach (var perkPanel in _defensePerkPanels)
+        {
+            perkPanel.ShowLevelsAndPrices(_defensePerks);
+        }
+        
+        foreach (var perkPanel in _incomePerkPanels)
+        {
+            perkPanel.ShowLevelsAndPrices(_incomePerks);
+        }
+    }
+
     public void Reset()
     {
         for (var i = 0; i < _temporaryPerkLevels.Length; i++)
