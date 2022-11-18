@@ -58,7 +58,7 @@ public class EnemyUnit : Unit
 
     protected override void Attack(Unit unit)
     {
-        if(Target == unit && StateMachine.CurrentState == UnitState.Attack) return;
+        if(Target != null && StateMachine.CurrentState == UnitState.Attack) return;
         
         if(Target != null)
             Target.IsDying -= RemoveTarget;
@@ -106,6 +106,9 @@ public class EnemyUnit : Unit
     public override void Reset()
     {
         Health = Stats.MaxHealth;
+        
+        IsHealthChanged?.Invoke(false);
+        
         StateMachine.Reset();
         AttackZone.Clear();
         _enemyTriggerZone.Clear();

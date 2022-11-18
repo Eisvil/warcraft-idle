@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
 public class PerkMenu : Menu
 {
+    [SerializeField] private CameraMover _cameraMover;
     [SerializeField] private GameObject _perkPanelsContainer;
-    [SerializeField] private PerkPanel[] _perkPanels;
-    [SerializeField] private List<RectTransform> _perkPanelsRectTransform;
-    [SerializeField] private Transform[] _movePoints;
+    [SerializeField] private bool _needSelectFromStart;
 
-    private Tween _tween;
     private bool _isSelected;
 
     protected override void OnEnable()
@@ -33,6 +32,14 @@ public class PerkMenu : Menu
         }
     }
 
+    private void Start()
+    {
+        if (_needSelectFromStart)
+        {
+            MenuButtons[0].Select();
+        }
+    }
+
     private void OnDeselecting(MenuButton button, bool isAnimationNeeded)
     {
         foreach (var menuButton in MenuButtons)
@@ -43,26 +50,10 @@ public class PerkMenu : Menu
         _perkPanelsContainer.SetActive(false);
         
         _isSelected = false;
+        
+        _cameraMover.MoveTo(CameraPosition.Default);
     }
 
-    private void ShowPerkPanel(int index, bool isAnimationNeeded = true)
-    {
-        if (isAnimationNeeded)
-        {
-            for (var i = 0; i < _perkPanelsRectTransform.Count; i++)
-            {
-                _tween = _perkPanelsRectTransform[i].DOMove(_movePoints[i + _movePoints.Length / 2 - index].position, 0.5f);
-            }
-        }
-        else
-        {
-            for (var i = 0; i < _perkPanelsRectTransform.Count; i++)
-            {
-                _perkPanelsRectTransform[i].position = _movePoints[i + _movePoints.Length / 2 - index].position;
-            }
-        }
-    }
-    
     protected override void OnSelecting(MenuButton button, bool isAnimationNeeded)
     {
         foreach (var menuButton in MenuButtons.Where(menuButton => menuButton != button))
@@ -75,6 +66,8 @@ public class PerkMenu : Menu
             _perkPanelsContainer.SetActive(true);
 
             _isSelected = true;
+            
+            _cameraMover.MoveTo(CameraPosition.WithPerks);
             
             ShowPerkPanel(MenuButtons.IndexOf(button), false);
         }

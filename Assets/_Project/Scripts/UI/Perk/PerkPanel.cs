@@ -14,5 +14,10 @@ public class PerkPanel : MonoBehaviour
             
             _upgradeButtons[i].Init(perksData[i]);
         }
+
+        for (var i = perksData.Length; i < _upgradeButtons.Length; i++)
+        {
+            _upgradeButtons[i].gameObject.SetActive(false);
+        }
     }
 }

@@ -14,5 +14,7 @@ public class MainScreenMenu : Menu
         {
             menuButton.Deselect(isAnimationNeeded);
         }
+        
+        ShowPerkPanel(MenuButtons.IndexOf(button));
     }
 }

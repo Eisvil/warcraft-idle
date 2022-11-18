@@ -37,17 +37,8 @@ public abstract class Displayer : MonoBehaviour
     
     public void Display(float value, bool isAnimationNeeded = false)
     {
-        /*if (isAnimationNeeded)
-        {
-            StartCoroutine(DisplayCoroutine(value));
-        }
-        else
-        {
-            _currentValue = value;
-            _text.text = value.ToString();
-        }*/
-        
         _currentValue = value;
-        _text.text = value.ToString();
+
+        _text.text = _currentValue == 0 ? value.ToString() : value.ToString("#.##");
     }
 }

@@ -9,9 +9,8 @@ public class WaveData : ScriptableObject
 {
     public WaveType Type;
     public int[] UnitIds;
-    public int[] UnitLevels;
     public float[] UnitsSpawnTime;
-    public int GoldReward;
+    public int UnitPerksLevel;
     public int ExpReward;
 }
 

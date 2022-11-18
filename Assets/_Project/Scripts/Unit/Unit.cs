@@ -10,38 +10,60 @@ using UnityEngine.Events;
 public abstract class Unit : MonoBehaviour, IDamageable
 {
     [SerializeField] private UnitRace _race;
-
-    private UnitStats _currentStats;
+    
     private UnitStats _baseStats;
     
-    protected float Health;
     protected AttackZone AttackZone;
     protected UnitStateMachine StateMachine;
     protected Tween Tween;
     protected PerkManager PerkManager => PerkManager.Instance;
     
     public int Id { get; private set; }
+    public float Health { get; protected set; }
     public bool IsEnemy { get; private set; }
+    public UnityAction<bool> IsHealthChanged;
 
     public UnitStats Stats
     { 
         get
         {
-            if (IsEnemy) return _currentStats;
+            var stats = new UnitStats();
             
-            var stats = _currentStats;
-            
-            stats.MaxHealth += _baseStats.MaxHealth *  PerkManager.GetTemporaryPerkLevel(PerkName.UnitHealth);
-            stats.Damage += _baseStats.Damage *  PerkManager.GetTemporaryPerkLevel(PerkName.Damage);
-            stats.CritChance += 0.1f * PerkManager.GetTemporaryPerkLevel(PerkName.CritChance);
-            stats.CritMultiplier += 0.1f * PerkManager.GetTemporaryPerkLevel(PerkName.CritMultiplier);
-            stats.AttackSpeed += 0.1f * PerkManager.GetTemporaryPerkLevel(PerkName.AttackSpeed);
-            stats.MoveSpeed += 0.1f * PerkManager.GetTemporaryPerkLevel(PerkName.MoveSpeed);
+            if (!IsEnemy)
+            {
+                stats.MaxHealth = _baseStats.MaxHealth *
+                                  (1 + PerkManager.GetPerkLevel(PerkName.UnitHealth) * PerkManager.PerkMultiplier);
+                stats.Damage = _baseStats.Damage *
+                               (1 + PerkManager.GetPerkLevel(PerkName.Damage) * PerkManager.PerkMultiplier);
+                stats.CritChance = _baseStats.CritChance *
+                                   (1 + PerkManager.GetPerkLevel(PerkName.CritChance) * PerkManager.PerkMultiplier);
+                stats.CritMultiplier = _baseStats.CritMultiplier *
+                                       (1 + PerkManager.GetPerkLevel(PerkName.CritMultiplier) * PerkManager.PerkMultiplier);
+                stats.AttackSpeed = _baseStats.AttackSpeed *
+                                    (1 + PerkManager.GetPerkLevel(PerkName.AttackSpeed) * PerkManager.PerkMultiplier);
+                stats.MoveSpeed = _baseStats.MoveSpeed *
+                                  (1 + PerkManager.GetPerkLevel(PerkName.MoveSpeed) * PerkManager.PerkMultiplier);
+                stats.AttackRange = _baseStats.AttackRange;
+            }
+            else
+            {
+                stats.MaxHealth = _baseStats.MaxHealth *
+                                  (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.Damage = _baseStats.Damage *
+                               (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.CritChance = _baseStats.CritChance *
+                                   (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.CritMultiplier = _baseStats.CritMultiplier *
+                                       (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.AttackSpeed = _baseStats.AttackSpeed *
+                                    (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.MoveSpeed = _baseStats.MoveSpeed *
+                                  (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.AttackRange = _baseStats.AttackRange;
+            }
 
             return stats;
         }
-
-        private set => _currentStats = value;
     }
     public Animator Animator { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
@@ -64,30 +86,11 @@ public abstract class Unit : MonoBehaviour, IDamageable
         Id = id;
         IsEnemy = isEnemy;
         _baseStats = basicStats;
+        Health = Stats.MaxHealth;
+        
+        IsHealthChanged?.Invoke(false);
 
-        if(isEnemy == false)
-        {
-            Stats = new UnitStats
-            {
-                MaxHealth = _baseStats.MaxHealth + _baseStats.MaxHealth * PerkManager.GetPermanentPerkLevel(PerkName.UnitHealth),
-                Damage = _baseStats.Damage + _baseStats.Damage * PerkManager.GetPermanentPerkLevel(PerkName.Damage),
-                CritChance = _baseStats.CritChance + 0.1f * PerkManager.GetPermanentPerkLevel(PerkName.CritChance),
-                CritMultiplier = _baseStats.CritMultiplier +
-                                 0.1f * PerkManager.GetPermanentPerkLevel(PerkName.CritMultiplier),
-                AttackSpeed = _baseStats.AttackSpeed + 0.1f * PerkManager.GetPermanentPerkLevel(PerkName.AttackSpeed),
-                AttackRange = _baseStats.AttackRange,
-                MoveSpeed = _baseStats.MoveSpeed + 0.1f * PerkManager.GetPermanentPerkLevel(PerkName.MoveSpeed),
-            };
-            
-            Health = Stats.MaxHealth;
-        }
-        else
-        {
-            Stats = _baseStats;
-            Health = Stats.MaxHealth;
-        }
-
-        AttackZone.Init(Stats.AttackRange + 0.5f);
+        AttackZone.Init(Stats.AttackRange + 1f);
         AttackZone.SetRootUnit(this);
     }
     
@@ -108,6 +111,8 @@ public abstract class Unit : MonoBehaviour, IDamageable
         if(StateMachine.CurrentState == UnitState.Die) return;
         
         Health -= damage;
+        
+        IsHealthChanged?.Invoke(true);
 
         if (Health <= 0)
         {

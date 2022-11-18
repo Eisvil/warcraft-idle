@@ -5,7 +5,15 @@ public class AttackState : State
 {
     protected virtual void Attack()
     {
-        Unit.Target.TakeDamage(Unit.Stats.Damage);
+        var randomValue = Random.Range(0, 100);
+        var finalDamage = Unit.Stats.Damage;
+
+        if (Unit.Stats.CritChance > randomValue)
+        {
+            finalDamage *= Unit.Stats.CritMultiplier;
+        }
+        
+        Unit.Target.TakeDamage(finalDamage);
     }
 
     public override void Enter()
@@ -15,6 +23,7 @@ public class AttackState : State
         Unit.AnimationEvents.IsAttacking += Attack;
         
         Unit.Animator.SetBool("Is_Attacking", true);
+        Unit.Animator.speed = Unit.Stats.AttackSpeed;
 
         Unit.LookAtTarget();
     }
@@ -26,7 +35,8 @@ public class AttackState : State
     public override void Exit()
     {
         Unit.AnimationEvents.IsAttacking -= Attack;
-        
+
+        Unit.Animator.speed = 1f;
         Unit.Animator.SetBool("Is_Attacking", false);
 
         base.Exit();

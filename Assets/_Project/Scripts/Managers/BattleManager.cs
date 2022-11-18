@@ -38,6 +38,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         _playerUnitSpawner.Init();
         _enemyUnitSpawner.Init(LevelManager.Instance.CurrentWave);
+        _castle.Init();
 
         IsBattleGoing = true;
         

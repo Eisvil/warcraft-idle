@@ -22,7 +22,7 @@ public class EnemyMoveState : MoveState
             direction =  (targetPosition - Unit.transform.position).normalized;
         }
 
-        Unit.Rigidbody.velocity = direction * _speed;
+        Unit.Rigidbody.velocity = direction * (_speed * Unit.Stats.MoveSpeed);
     }
 
     public override void Enter()

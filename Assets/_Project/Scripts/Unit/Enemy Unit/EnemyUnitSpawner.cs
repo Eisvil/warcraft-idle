@@ -16,7 +16,7 @@ public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
     public void Init(WaveData waveData)
     {
         SelectedIds = waveData.UnitIds;
-        SelectedUnitLevels = waveData.UnitLevels;
+        SelectedUnitLevels = new int[waveData.UnitIds.Length];
         Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetEnemyUnit(unitId, UnitRace.Undead)).ToList();
 
         PoolSizes = new List<int>();
@@ -37,7 +37,6 @@ public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
         unit.IsDying -= OnUnitDying;
         
         Wallet.Instance.AddExp(LevelManager.Instance.CurrentWave.ExpReward);
-        Wallet.Instance.AddGold(LevelManager.Instance.CurrentWave.GoldReward);
     }
 
     protected override void SpawnUnit(int id)

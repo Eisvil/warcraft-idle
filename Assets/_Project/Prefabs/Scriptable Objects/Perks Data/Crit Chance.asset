@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 4
   Name: Crit Chance
-  Icon: {fileID: 21300000, guid: 166231bd9cc3547cdbb05acb1fbe35a2, type: 3}
+  Icon: {fileID: -1831145211, guid: c4992c99e84d0f447bc1426677ff1ac7, type: 3}

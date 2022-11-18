@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: {fileID: 8879675299967574412}
   _icon: {fileID: 1634456512756816106}
-  LevelText: {fileID: 8458661433734346167}
+  MultiplierText: {fileID: 8458661433734346167}
   PriceText: {fileID: 5545999730655198478}
 --- !u!1 &1051949541832142859
 GameObject:

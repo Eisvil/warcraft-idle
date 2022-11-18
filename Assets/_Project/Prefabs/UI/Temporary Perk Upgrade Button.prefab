@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: {fileID: 8879675299967574412}
   _icon: {fileID: 1634456512756816106}
-  LevelText: {fileID: 8458661433734346167}
+  MultiplierText: {fileID: 8458661433734346167}
   PriceText: {fileID: 5545999730655198478}
 --- !u!1 &1051949541832142859
 GameObject:
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 260398176892296446}
   - component: {fileID: 4105774806154630910}
   m_Layer: 5
-  m_Name: Level Frame
+  m_Name: Multiplier Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

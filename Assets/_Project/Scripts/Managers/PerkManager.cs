@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PerkManager : Singleton<PerkManager>
 {
@@ -17,7 +18,10 @@ public class PerkManager : Singleton<PerkManager>
     [SerializeField] private PerkPanel[] _incomePerkPanels;
     
     private int[] _temporaryPerkLevels;
-    
+
+    public float PerkMultiplier { get; private set; } = 0.05f;
+    public event UnityAction<PerkName> IsAnyPerkUpgraded; 
+
     private void Init()
     {
         _temporaryPerkLevels = new int[Enum.GetNames(typeof(PerkName)).Length];
@@ -46,6 +50,8 @@ public class PerkManager : Singleton<PerkManager>
     public void UpgradeTemporaryPerk(PerkName perkName)
     {
         _temporaryPerkLevels[(int)perkName]++;
+        
+        IsAnyPerkUpgraded?.Invoke(perkName);
     }
     
     public void UpgradePermanentPerk(PerkName perkName)
@@ -63,6 +69,11 @@ public class PerkManager : Singleton<PerkManager>
     public int GetPermanentPerkLevel(PerkName perkName)
     {
         return DataManager.Instance.Data.PermanentPerkLevels[(int)perkName];
+    }
+
+    public int GetPerkLevel(PerkName perkName)
+    {
+        return DataManager.Instance.Data.PermanentPerkLevels[(int)perkName] + _temporaryPerkLevels[(int)perkName];
     }
 
     public int GetPerkPriceForGold(PerkName perkName)

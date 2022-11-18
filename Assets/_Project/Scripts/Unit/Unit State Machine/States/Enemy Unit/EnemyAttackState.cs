@@ -7,13 +7,21 @@ public class EnemyAttackState : AttackState
 
     protected override void Attack()
     {
+        var randomValue = Random.Range(0, 100);
+        var finalDamage = Unit.Stats.Damage;
+
+        if (Unit.Stats.CritChance > randomValue)
+        {
+            finalDamage *= Unit.Stats.CritMultiplier;
+        }
+        
         if(_isTargetThere)
         {
-            Unit.Target.TakeDamage(Unit.Stats.Damage);
+            Unit.Target.TakeDamage(finalDamage);
         }
         else
         {
-            Castle.TakeDamage(Unit.Stats.Damage);
+            Castle.TakeDamage(finalDamage);
         }
     }
     

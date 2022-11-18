@@ -5,6 +5,7 @@ public class PerkMenuButton : MenuButton
 {
     [SerializeField] private Vector3 _selectedIconScale;
     [SerializeField] private Vector3 _deselectedIconScale;
+    [SerializeField] private bool _isDeselectYourself;
     
     public override void Select(bool isAnimationNeeded = true)
     {
@@ -47,7 +48,7 @@ public class PerkMenuButton : MenuButton
 
     public void OnClick()
     {
-        if (IsSelected)
+        if (IsSelected && _isDeselectYourself)
             Deselect(false, true);
         else
             Select();

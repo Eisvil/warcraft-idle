@@ -12,7 +12,9 @@ public class MoveState : State
         var targetPosition = Unit.Target.transform.position;
         var direction =  (targetPosition - Unit.transform.position).normalized;
 
-        Unit.Rigidbody.velocity = direction * _speed;
+        Unit.Animator.speed = Unit.Stats.MoveSpeed;
+
+        Unit.Rigidbody.velocity = direction * (_speed * Unit.Stats.MoveSpeed);
     }
 
     public override void Enter()
@@ -33,6 +35,8 @@ public class MoveState : State
 
     public override void Exit()
     {
+        Unit.Animator.speed = 1f;
+        
         Unit.Animator.SetBool("Is_Moving", false);
         
         Unit.Rigidbody.velocity = Vector3.zero;

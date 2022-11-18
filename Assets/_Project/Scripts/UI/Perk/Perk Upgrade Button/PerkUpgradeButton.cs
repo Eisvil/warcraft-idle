@@ -9,7 +9,7 @@ public abstract class PerkUpgradeButton : MonoBehaviour
 {
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon;
-    [SerializeField] protected TMP_Text LevelText;
+    [SerializeField] protected TMP_Text MultiplierText;
     [SerializeField] protected TMP_Text PriceText;
 
     private Button _button;
