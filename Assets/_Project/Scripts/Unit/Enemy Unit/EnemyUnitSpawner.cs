@@ -36,7 +36,7 @@ public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
     {
         unit.IsDying -= OnUnitDying;
         
-        Wallet.Instance.AddExp(LevelManager.Instance.CurrentWave.ExpReward);
+        Wallet.Instance.AddExp(LevelManager.Instance.CurrentWave.ExpReward[unit.Id]);
     }
 
     protected override void TryClear()
