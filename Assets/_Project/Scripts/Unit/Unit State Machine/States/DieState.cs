@@ -5,6 +5,11 @@ public class DieState : State
     private void DisableUnit()
     {
         Unit.gameObject.SetActive(false);
+        
+        if (Unit.IsDestroyNeeded)
+        {
+            Unit.SelfDestroy();
+        }
     }
     
     public override void Enter()

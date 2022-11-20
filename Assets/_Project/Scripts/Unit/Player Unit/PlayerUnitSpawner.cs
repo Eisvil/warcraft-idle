@@ -20,6 +20,18 @@ public class PlayerUnitSpawner : UnitSpawner<PlayerUnit>
         InitPool();
     }
 
+    protected override void TryClear()
+    {
+        if(Pool.Count == 0) return;
+        
+        foreach (var unit in Pool)
+        {
+            Destroy(unit.gameObject);
+        }
+        
+        Pool.Clear();
+    }
+
     protected override void SpawnUnit(int id)
     {
         var unit = TryGetUnit(id);

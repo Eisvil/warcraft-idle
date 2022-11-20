@@ -40,6 +40,8 @@ public abstract class TriggerZone : MonoBehaviour
         
         foreach (var unit in Units)
         {
+            if(unit == null) continue;
+            
             var unitDistance = Vector3.Distance(unitPosition, unit.transform.position);
 
             if (!(unitDistance < closestDistance)) continue;

@@ -98,7 +98,7 @@ public class EnemyUnit : Unit
     {
         if(StateMachine.CurrentState == UnitState.Die) return;
         
-        transform.DOLookAt(Target != null ? Target.transform.position : BattleManager.Instance.Castle.transform.position, 0.35f);
+        transform.DOLookAt(Target != null ? Target.transform.position : BattleManager.Instance.Castle.transform.position, 0.35f).SetLink(gameObject);
         
         Tween.OnComplete(LookAtTarget);
     }

@@ -9,8 +9,9 @@ public class LevelManager : Singleton<LevelManager>
 
     private LevelData _currentLevel;
     private WaveData _currentWave;
-    private int _currentWaveIndex;
-
+    
+    public int CurrentLevelIndex { get; private set; }
+    public int CurrentWaveIndex { get; private set; }
     public WaveData CurrentWave => _currentWave;
     public event UnityAction IsWaveCompleted; 
     public event UnityAction IsLevelCompleted; 
@@ -24,21 +25,22 @@ public class LevelManager : Singleton<LevelManager>
     public void SelectLevel(int index)
     {
         _currentLevel = _levels[index];
+        CurrentLevelIndex = index;
 
-        _currentWaveIndex = 0;
-        _currentWave = _currentLevel.Waves[_currentWaveIndex];
+        CurrentWaveIndex = 0;
+        _currentWave = _currentLevel.Waves[CurrentWaveIndex];
     }
 
     public void WaveComplete()
     {
-        if (_currentWaveIndex + 1 >= _currentLevel.Waves.Length)
+        if (CurrentWaveIndex + 1 >= _currentLevel.Waves.Length)
         {
             CompleteLevel();
         }
         else
         {
-            _currentWaveIndex++;
-            _currentWave = _currentLevel.Waves[_currentWaveIndex];
+            CurrentWaveIndex++;
+            _currentWave = _currentLevel.Waves[CurrentWaveIndex];
             
             IsWaveCompleted?.Invoke();
         }

@@ -39,6 +39,18 @@ public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
         Wallet.Instance.AddExp(LevelManager.Instance.CurrentWave.ExpReward);
     }
 
+    protected override void TryClear()
+    {
+        if(Pool.Count == 0) return;
+        
+        foreach (var unit in Pool)
+        {
+            unit.SelfDestroy();
+        }
+
+        Pool.Clear();
+    }
+
     protected override void SpawnUnit(int id)
     {
         var unit = TryGetUnit(id);

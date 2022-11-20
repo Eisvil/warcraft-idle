@@ -7,9 +7,11 @@ public class GoldDisplayer : Displayer
     {
         Display(Wallet.Instance.Gold);
     }
-    
-    private void Start()
+
+    protected override void Start()
     {
+        base.Start();
+        
         Wallet.Instance.IsGoldChanged += Display;
     }
 

@@ -7,9 +7,11 @@ public class ExpDisplayer : Displayer
     {
         Display(Wallet.Instance.Experience);
     }
-    
-    private void Start()
+
+    protected override void Start()
     {
+        base.Start();
+        
         Wallet.Instance.IsExpChanged += Display;
     }
 

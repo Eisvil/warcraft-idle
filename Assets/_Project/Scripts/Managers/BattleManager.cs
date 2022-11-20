@@ -8,6 +8,7 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private Castle _castle;
     [SerializeField] private PlayerUnitSpawner _playerUnitSpawner;
     [SerializeField] private EnemyUnitSpawner _enemyUnitSpawner;
+    [SerializeField] private WaveTimer _waveTimer;
     
     public Castle Castle => _castle;
     public bool IsBattleGoing { get; private set; }
@@ -32,6 +33,14 @@ public class BattleManager : Singleton<BattleManager>
     private void OnLevelCompleted()
     {
         IsBattleGoing = false;
+        
+        _waveTimer.StopTimer();
+        
+        _enemyUnitSpawner.ClearAll();
+        _playerUnitSpawner.ClearAll();
+        
+        UIManager.Instance.GameplayScreen.Hide();
+        UIManager.Instance.WinScreen.Show();
     }
 
     public void StartBattle()
@@ -39,6 +48,7 @@ public class BattleManager : Singleton<BattleManager>
         _playerUnitSpawner.Init();
         _enemyUnitSpawner.Init(LevelManager.Instance.CurrentWave);
         _castle.Init();
+        _waveTimer.StartTimer();
 
         IsBattleGoing = true;
         
@@ -50,6 +60,8 @@ public class BattleManager : Singleton<BattleManager>
     public void LoseBattle()
     {
         IsBattleGoing = false;
+        
+        _waveTimer.StopTimer();
 
         Time.timeScale = 1f;
         

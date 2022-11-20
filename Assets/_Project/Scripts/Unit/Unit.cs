@@ -69,6 +69,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
     public Rigidbody Rigidbody { get; private set; }
     public Unit Target { get; protected set; }
     public UnitAnimationEvents AnimationEvents { get; private set; }
+    public bool IsDestroyNeeded { get; protected set; } = false;
     public UnitRace Race => _race;
     public event UnityAction<Unit> IsDying;
 
@@ -106,6 +107,21 @@ public abstract class Unit : MonoBehaviour, IDamageable
 
     public abstract void Reset();
 
+    public void SelfDestroy()
+    {
+        if (gameObject.activeSelf == false)
+        {
+            if(Target != null)
+                Target.IsDying -= RemoveTarget;
+            
+            Destroy(gameObject);
+        }
+        else
+        {
+            IsDestroyNeeded = true;
+        }
+    }
+    
     public void TakeDamage(float damage)
     {
         if(StateMachine.CurrentState == UnitState.Die) return;

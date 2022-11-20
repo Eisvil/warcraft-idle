@@ -7,9 +7,11 @@ public class GemDisplayer : Displayer
     {
         Display(Wallet.Instance.Gem);
     }
-    
-    private void Start()
+
+    protected override void Start()
     {
+        base.Start();
+        
         Wallet.Instance.IsGemChanged += Display;
     }
 

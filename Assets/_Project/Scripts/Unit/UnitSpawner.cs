@@ -6,9 +6,9 @@ public abstract class UnitSpawner<T> : MonoBehaviour where T: Unit
 {
     [SerializeField] private bool _isEnemy;
     
-    private readonly List<T> _pool = new List<T>();
     private bool _isInitialize;
     
+    protected readonly List<T> Pool = new List<T>();
     protected List<T> Templates;
     protected List<int> PoolSizes;
     protected int[] SelectedUnitLevels;
@@ -38,18 +38,8 @@ public abstract class UnitSpawner<T> : MonoBehaviour where T: Unit
             UnitsTimer[i] = 0f;
         }
     }
-    
-    private void TryClear()
-    {
-        if(_pool.Count == 0) return;
-        
-        foreach (var unit in _pool)
-        {
-            Destroy(unit);
-        }
-        
-        _pool.Clear();
-    }
+
+    protected abstract void TryClear();
 
     protected abstract void SpawnUnit(int id);
 
@@ -67,7 +57,7 @@ public abstract class UnitSpawner<T> : MonoBehaviour where T: Unit
                 
                 unit.Init(SelectedIds[i], UnitDataStorage.Instance.TryGetUnitBasicStats(i, SelectedUnitLevels[i]), _isEnemy);
 
-                _pool.Add(unit);
+                Pool.Add(unit);
  
                 unit.gameObject.SetActive(false);
             }
@@ -78,16 +68,26 @@ public abstract class UnitSpawner<T> : MonoBehaviour where T: Unit
 
     protected T TryGetUnit(int id)
     {
-        return _pool.FirstOrDefault(unit => unit.gameObject.activeSelf == false && unit.Id == id);
+        return Pool.FirstOrDefault(unit => unit.gameObject.activeSelf == false && unit.Id == id);
     }
 
     protected int GetCountOfInactiveUnits(int id)
     {
-        return _pool.Count(unit => unit.gameObject.activeSelf == false && unit.Id == id);
+        return Pool.Count(unit => unit.gameObject.activeSelf == false && unit.Id == id);
     }
 
     public List<T> GetActiveUnits()
     {
-        return _pool.Where(unit => unit.gameObject.activeSelf).ToList();
+        return Pool.Where(unit => unit.gameObject.activeSelf).ToList();
+    }
+
+    public void ClearAll()
+    {
+        foreach (var unit in Pool)
+        {
+            unit.gameObject.SetActive(false);
+            
+            unit.SelfDestroy();
+        }
     }
 }

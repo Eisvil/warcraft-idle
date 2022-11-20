@@ -12,7 +12,7 @@ public abstract class Displayer : MonoBehaviour
 
     protected abstract void Init();
 
-    private void Start()
+    protected virtual void Start()
     {
         Init();
     }
