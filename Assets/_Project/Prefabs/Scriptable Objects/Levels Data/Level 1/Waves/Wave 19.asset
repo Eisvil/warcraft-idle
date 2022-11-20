@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48f05a6d72cc4dd4db816a8b534c8c49, type: 3}
-  m_Name: Wave 4
+  m_Name: Wave 19
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   Type: 0
   UnitIds: 0000000001000000
   UnitsSpawnTime:
-  - 2.5
-  - 12
+  - 1.5
+  - 8
   ExpReward: 
-  UnitPerksLevel: 1
+  UnitPerksLevel: 9
