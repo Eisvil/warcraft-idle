@@ -24,6 +24,6 @@ public class CastleHealthBar : Bar
     {
         Show(CurrentHealth, MaxHealth, isAnimationNeeded);
 
-        _text.text = $"{CurrentHealth}/{MaxHealth}";
+        _text.text = $"{Math.Round(CurrentHealth, 2)}/{MaxHealth}";
     }
 }

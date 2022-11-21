@@ -39,6 +39,6 @@ public abstract class Displayer : MonoBehaviour
     {
         _currentValue = value;
 
-        _text.text = _currentValue == 0 ? value.ToString() : value.ToString("#.##");
+        _text.text = Math.Round(_currentValue, 2).ToString();
     }
 }

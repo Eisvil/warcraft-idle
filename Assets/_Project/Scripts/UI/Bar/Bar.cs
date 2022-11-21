@@ -22,7 +22,7 @@ public abstract class Bar : MonoBehaviour
         
         if (isAnimationNeeded)
         {
-            _tween = _slider.DOValue(value, 0.3f);
+            _tween = _slider.DOValue(value, 0.3f * Time.timeScale);
         }
         else
         {

@@ -52,6 +52,7 @@ public class BattleManager : Singleton<BattleManager>
 
         IsBattleGoing = true;
         
+        PerkManager.Instance.UpdateStats();
         UIManager.Instance.GameplayScreen.Show();
         
         Wallet.Instance.ResetExp();
