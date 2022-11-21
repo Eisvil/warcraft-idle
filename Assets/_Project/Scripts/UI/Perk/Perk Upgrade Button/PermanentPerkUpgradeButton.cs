@@ -24,6 +24,26 @@ public class PermanentPerkUpgradeButton : PerkUpgradeButton
                 
                 MultiplierText.text = (0.5f * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
                 break;
+            case PerkName.ExpPerEnemy:
+                perkMultiplier *= 2;
+                
+                MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
+                break;
+            case PerkName.GoldMining:
+                perkMultiplier *= 2;
+                
+                MultiplierText.text = (1 * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
+                break;
+            case PerkName.GoldPerWave:
+                perkMultiplier *= 10;
+                
+                MultiplierText.text = (LevelManager.Instance.GoldRewardForWave * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
+                break;
+            case PerkName.ExpPerWave:
+                perkMultiplier *= 10;
+                
+                MultiplierText.text = (LevelManager.Instance.ExpRewardForWave * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
+                break;
             default:
                 MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
                 break;

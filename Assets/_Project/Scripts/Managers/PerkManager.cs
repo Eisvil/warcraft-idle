@@ -126,6 +126,6 @@ public enum PerkName
     HealthRegen,
     ExpPerEnemy,
     GoldMining,
-    ExpPerLevel,
-    GoldPerLevel
+    ExpPerWave,
+    GoldPerWave
 }

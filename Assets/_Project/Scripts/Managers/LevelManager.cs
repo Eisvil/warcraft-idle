@@ -12,6 +12,8 @@ public class LevelManager : Singleton<LevelManager>
     
     public int CurrentLevelIndex { get; private set; }
     public int CurrentWaveIndex { get; private set; }
+    public float ExpRewardForWave { get; private set; } = 3;
+    public float GoldRewardForWave { get; private set; } = 3;
     public WaveData CurrentWave => _currentWave;
     public event UnityAction IsWaveCompleted; 
     public event UnityAction IsLevelCompleted; 
@@ -41,6 +43,9 @@ public class LevelManager : Singleton<LevelManager>
         {
             CurrentWaveIndex++;
             _currentWave = _currentLevel.Waves[CurrentWaveIndex];
+            
+            Wallet.Instance.AddExp(ExpRewardForWave, false);
+            Wallet.Instance.AddGold(GoldRewardForWave, false);
             
             IsWaveCompleted?.Invoke();
         }

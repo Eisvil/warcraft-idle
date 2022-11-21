@@ -21,6 +21,7 @@ MonoBehaviour:
     AttackSpeed: 1
     AttackRange: 1
     MoveSpeed: 0.5
+    ExpReward: 5
   PoolSize: 01000000
   UnitsSpawnTime:
   - 5

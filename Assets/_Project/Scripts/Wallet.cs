@@ -67,9 +67,9 @@ public class Wallet : Singleton<Wallet>
         }
     }
 
-    public void AddGold(int value, bool isFromMining = true)
+    public void AddGold(float value, bool isFromMining = true)
     {
-        _gold += value * (1 + (isFromMining ? PerkManager.Instance.GetPerkLevel(PerkName.GoldMining) : PerkManager.Instance.GetPerkLevel(PerkName.GoldPerLevel)) * PerkManager.Instance.PerkMultiplier);
+        _gold += value * (1 + (isFromMining ? PerkManager.Instance.GetPerkLevel(PerkName.GoldMining) * 2 : PerkManager.Instance.GetPerkLevel(PerkName.GoldPerWave) * 10) * PerkManager.Instance.PerkMultiplier);
         
         DataManager.Instance.Data.Gold = _gold;
         DataManager.Instance.Save();
@@ -77,9 +77,9 @@ public class Wallet : Singleton<Wallet>
         IsGoldChanged?.Invoke(_gold, true);
     }
     
-    public void AddExp(int value, bool isPerEnemy = true)
+    public void AddExp(float value, bool isPerEnemy = true)
     {
-        _experience += value * (1 + (isPerEnemy ? PerkManager.Instance.GetPerkLevel(PerkName.ExpPerEnemy) : PerkManager.Instance.GetPerkLevel(PerkName.ExpPerLevel)) * PerkManager.Instance.PerkMultiplier);
+        _experience += value * (1 + (isPerEnemy ? PerkManager.Instance.GetPerkLevel(PerkName.ExpPerEnemy) * 2 : PerkManager.Instance.GetPerkLevel(PerkName.ExpPerWave) * 10) * PerkManager.Instance.PerkMultiplier);
         
         IsExpChanged?.Invoke(_experience, true);
     }

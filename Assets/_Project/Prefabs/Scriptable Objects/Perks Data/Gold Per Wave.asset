@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e84f93a3cb3e74b8634e3b977f84ef, type: 3}
-  m_Name: Gold Per Level
+  m_Name: Gold Per Wave
   m_EditorClassIdentifier: 
   Id: 11
-  Name: Gold Per Level
+  Name: Gold Per Wave
   Icon: {fileID: -210436076, guid: c4992c99e84d0f447bc1426677ff1ac7, type: 3}

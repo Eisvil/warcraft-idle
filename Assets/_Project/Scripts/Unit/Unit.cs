@@ -59,6 +59,7 @@ public abstract class Unit : MonoBehaviour, IDamageable
                                     (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
                 stats.MoveSpeed = _baseStats.MoveSpeed *
                                   (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                stats.ExpReward = _baseStats.ExpReward * (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier * 2);
                 stats.AttackRange = _baseStats.AttackRange;
             }
 
@@ -156,6 +157,7 @@ public class UnitStats
     public float AttackSpeed;
     public float AttackRange;
     public float MoveSpeed;
+    public float ExpReward;
 }
 
 [Serializable]
