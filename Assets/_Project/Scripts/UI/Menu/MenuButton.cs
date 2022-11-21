@@ -20,6 +20,7 @@ public abstract class MenuButton : MonoBehaviour
     protected Button Button;
     protected Tween Tween;
     protected bool IsSelected;
+    protected float AnimationDuration => _animationDuration * Time.timeScale;
 
     public event UnityAction<MenuButton, bool> IsSelecting;
     public event UnityAction<MenuButton, bool> IsDeselecting;

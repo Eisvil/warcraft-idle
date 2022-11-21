@@ -16,9 +16,9 @@ public class MainScreenMenuButton : MenuButton
         
         if(isAnimationNeeded)
         {
-            Tween = RectTransform.DOSizeDelta(_selectedSize, _animationDuration);
-            Tween = _icon.rectTransform.DOAnchorPos(_selectedIconPosition, _animationDuration);
-            Tween = _name.rectTransform.DOScale(Vector3.one, _animationDuration);
+            Tween = RectTransform.DOSizeDelta(_selectedSize, AnimationDuration);
+            Tween = _icon.rectTransform.DOAnchorPos(_selectedIconPosition, AnimationDuration);
+            Tween = _name.rectTransform.DOScale(Vector3.one, AnimationDuration);
         }
         else
         {
@@ -38,9 +38,9 @@ public class MainScreenMenuButton : MenuButton
 
         if(isAnimationNeeded)
         {
-            Tween = RectTransform.DOSizeDelta(_deselectedSize, _animationDuration);
-            Tween = _icon.rectTransform.DOAnchorPos(_deselectedIconPosition, _animationDuration);
-            Tween = _name.rectTransform.DOScale(Vector3.zero, _animationDuration);
+            Tween = RectTransform.DOSizeDelta(_deselectedSize, AnimationDuration);
+            Tween = _icon.rectTransform.DOAnchorPos(_deselectedIconPosition, AnimationDuration);
+            Tween = _name.rectTransform.DOScale(Vector3.zero, AnimationDuration);
         }
         else
         {

@@ -30,6 +30,8 @@ public class WaveTimer : MonoBehaviour
     {
         _waveProgressBar.SetLevel();
         
+        UIManager.Instance.GameplayScreen.WaveAnnouncement.Show();
+        
         _timer = 0;
         
         _coroutine = StartCoroutine(StartTimerCoroutine());

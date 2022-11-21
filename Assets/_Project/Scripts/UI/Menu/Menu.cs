@@ -42,7 +42,7 @@ public abstract class Menu : MonoBehaviour
         {
             for (var i = 0; i < PanelsRectTransform.Count; i++)
             {
-                _tween = PanelsRectTransform[i].DOMove(MovePoints[i + MovePoints.Length / 2 - index].position, _scrollSpeed);
+                _tween = PanelsRectTransform[i].DOMove(MovePoints[i + MovePoints.Length / 2 - index].position, _scrollSpeed * Time.timeScale);
             }
         }
         else
