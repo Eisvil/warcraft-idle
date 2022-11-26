@@ -23,6 +23,8 @@ public class EnemyAttackState : AttackState
         {
             Castle.TakeDamage(finalDamage);
         }
+        
+        SoundManager.Instance.PlaySound(SoundName.SwordHit);
     }
     
     public override void Enter()

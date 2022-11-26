@@ -10,6 +10,8 @@ public class MainScreenMenuButton : MenuButton
     
     public override void Select(bool isAnimationNeeded = true)
     {
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+        
         if(IsSelected) return;
         
         IsSelected = true;

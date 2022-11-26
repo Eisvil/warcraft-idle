@@ -11,5 +11,7 @@ public class MainScreen : UIScreen
         BattleManager.Instance.StartBattle();
         
         Hide();
+        
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
     }
 }

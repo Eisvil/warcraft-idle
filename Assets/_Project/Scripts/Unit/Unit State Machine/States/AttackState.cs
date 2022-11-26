@@ -14,6 +14,8 @@ public class AttackState : State
         }
         
         Unit.Target.TakeDamage(finalDamage);
+        
+        SoundManager.Instance.PlaySound(SoundName.SwordHit);
     }
 
     public override void Enter()

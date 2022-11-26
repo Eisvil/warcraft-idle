@@ -52,6 +52,8 @@ public class PermanentPerkUpgradeButton : PerkUpgradeButton
 
     public override void TryUpgradePerk()
     {
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+        
         if (!Wallet.Instance.TrySpendGold(CurrentPrice)) return;
         
         PerkManager.Instance.UpgradePermanentPerk(PerkData.Id);

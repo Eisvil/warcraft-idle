@@ -48,6 +48,8 @@ public class PerkMenuButton : MenuButton
 
     public void OnClick()
     {
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+        
         if (IsSelected && _isDeselectYourself)
             Deselect(false, true);
         else

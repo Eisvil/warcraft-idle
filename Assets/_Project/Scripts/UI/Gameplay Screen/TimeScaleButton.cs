@@ -22,5 +22,7 @@ public class TimeScaleButton : MonoBehaviour
         _text.text = "x" + _currentSpeed;
 
         Time.timeScale = _currentSpeed;
+        
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
     }
 }

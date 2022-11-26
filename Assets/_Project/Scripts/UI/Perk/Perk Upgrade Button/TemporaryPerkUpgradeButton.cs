@@ -53,6 +53,8 @@ public class TemporaryPerkUpgradeButton : PerkUpgradeButton
 
     public override void TryUpgradePerk()
     {
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+        
         if (!Wallet.Instance.TrySpendExp(CurrentPrice)) return;
         
         PerkManager.Instance.UpgradeTemporaryPerk(PerkData.Id);

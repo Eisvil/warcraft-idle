@@ -7,6 +7,8 @@ public class WinScreen : UIScreen
 {
     public void Continue()
     {
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+        
         SceneManager.LoadScene(0);
     }
 }
