@@ -43,6 +43,16 @@ public class SoundManager : Singleton<SoundManager>
         _musicSource.clip = _musics[(int)musicName];
         _musicSource.Play();
     }
+
+    public void ChangeSoundsVolume(float normalizedValue)
+    {
+        _master.SetFloat("Sound", Mathf.Lerp(-40, 10, normalizedValue));
+    }
+    
+    public void ChangeMusicVolume(float normalizedValue)
+    {
+        _master.SetFloat("Music", Mathf.Lerp(-40, 10, normalizedValue));
+    }
 }
 
 [Serializable]

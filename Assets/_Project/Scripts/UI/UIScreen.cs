@@ -32,6 +32,6 @@ public abstract class UIScreen : MonoBehaviour
     public virtual void Hide()
     {
         CanvasGroup.alpha = 0;
-        CanvasGroup.blocksRaycasts = true;
+        CanvasGroup.blocksRaycasts = false;
     }
 }
