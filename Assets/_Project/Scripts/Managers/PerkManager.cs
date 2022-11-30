@@ -52,6 +52,8 @@ public class PerkManager : Singleton<PerkManager>
         _temporaryPerkLevels[(int)perkName]++;
         
         IsAnyPerkUpgraded?.Invoke(perkName);
+        
+        AnalyticsManager.Instance.SendEvent($"upgrade_temporary_perk_{perkName}");
     }
     
     public void UpgradePermanentPerk(PerkName perkName)
@@ -59,6 +61,8 @@ public class PerkManager : Singleton<PerkManager>
         DataManager.Instance.Data.PermanentPerkLevels[(int)perkName]++;
         
         DataManager.Instance.Save();
+        
+        AnalyticsManager.Instance.SendEvent($"upgrade_Permanent_perk_{perkName}");
     }
     
     public int GetTemporaryPerkLevel(PerkName perkName)

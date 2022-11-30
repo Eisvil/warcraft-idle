@@ -22,6 +22,8 @@ public class LevelManager : Singleton<LevelManager>
     private void CompleteLevel()
     {
         IsLevelCompleted?.Invoke();
+        
+        AnalyticsManager.Instance.SendEvent($"level_complete_{CurrentLevelIndex}");
     }
     
     public void SelectLevel(int index)
@@ -31,6 +33,8 @@ public class LevelManager : Singleton<LevelManager>
 
         CurrentWaveIndex = 0;
         _currentWave = _currentLevel.Waves[CurrentWaveIndex];
+        
+        AnalyticsManager.Instance.SendEvent($"level_start_{CurrentLevelIndex}");
     }
 
     public void WaveComplete()
@@ -48,6 +52,8 @@ public class LevelManager : Singleton<LevelManager>
             Wallet.Instance.AddGold(GoldRewardForWave, false);
             
             IsWaveCompleted?.Invoke();
+            
+            AnalyticsManager.Instance.SendEvent($"wave_complete_{CurrentLevelIndex}");
         }
     }
 }
