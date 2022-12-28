@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae37d2dfe29b0d42b71563b817b1e5a, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: 
+  Id: 3
+  BasicStats:
+  - MaxHealth: 3
+    Damage: 12
+    CritChance: 1
+    CritMultiplier: 2
+    AttackSpeed: 0.75
+    AttackRange: 4
+    MoveSpeed: 0.5
+    ExpReward: 10
+  PoolSize: 01000000
+  UnitsSpawnTime:
+  - 7
+  PlayerTemplates:
+  - {fileID: 9199119658127839519, guid: fa5b58b93c1bea040a819c1b5d04dba1, type: 3}
+  EnemyTemplates: []

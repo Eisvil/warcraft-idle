@@ -3103,8 +3103,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player State Machine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1843202291745118366, guid: bfd44d4fade2a4e4fa5cc3201fbf7251, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bfd44d4fade2a4e4fa5cc3201fbf7251, type: 3}
+--- !u!1 &3147972227746998930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6210564422620824989, guid: bfd44d4fade2a4e4fa5cc3201fbf7251, type: 3}
+  m_PrefabInstance: {fileID: 9052098224467865359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4737939757433661366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3147972227746998930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e643edb5a6aa7414484b561d03ad710e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 2
+  _exitState: 0
+  _projectileTemplate: {fileID: 6932645099629696881, guid: 73cfe2f31eb80934ca52abfc055c6d6d, type: 3}
+  _projecSpawnPoint: {fileID: 1871813706609760496}
 --- !u!4 &8886578778233135267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490042646614871980, guid: bfd44d4fade2a4e4fa5cc3201fbf7251, type: 3}
@@ -3224,7 +3246,7 @@ PrefabInstance:
     - target: {fileID: 7261508197182143162, guid: 8d624785006aac64898abc223d1bae7d, type: 3}
       propertyPath: _unit
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9199119658127839519}
     - target: {fileID: 7261508197182143163, guid: 8d624785006aac64898abc223d1bae7d, type: 3}
       propertyPath: m_Value
       value: 1

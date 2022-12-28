@@ -2922,8 +2922,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 2
   _exitState: 0
-  _arrowTemplate: {fileID: 1709556500609280465, guid: a96ee8797ec3a0947912e3a4b5b9ac0c, type: 3}
-  _arrowSpawnPoint: {fileID: 925101146399696411}
+  _projectileTemplate: {fileID: 1709556500609280465, guid: a96ee8797ec3a0947912e3a4b5b9ac0c, type: 3}
+  _projecSpawnPoint: {fileID: 925101146399696411}
 --- !u!4 &7517451680589157728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490042646614871980, guid: bfd44d4fade2a4e4fa5cc3201fbf7251, type: 3}
