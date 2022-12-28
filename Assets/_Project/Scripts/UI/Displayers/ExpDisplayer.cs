@@ -8,14 +8,12 @@ public class ExpDisplayer : Displayer
         Display(Wallet.Instance.Experience);
     }
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
-        
         Wallet.Instance.IsExpChanged += Display;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Wallet.Instance.IsExpChanged -= Display;
     }

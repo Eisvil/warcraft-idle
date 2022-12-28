@@ -1,12 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PermanentPerkUpgradeButton : PerkUpgradeButton
 {
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        
+        Wallet.Instance.IsGoldChanged += CheckBalance;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        
+        Wallet.Instance.IsGoldChanged -= CheckBalance;
+    }
+
     public override void ShowPriceAndStats()
     {
         CurrentPrice = PerkManager.Instance.GetPerkPriceForGold(PerkData.Id);
+        
+        CheckBalance(Wallet.Instance.Gold);
 
         PriceText.text = CurrentPrice.ToString();
 
@@ -52,10 +69,10 @@ public class PermanentPerkUpgradeButton : PerkUpgradeButton
 
     public override void TryUpgradePerk()
     {
-        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
-        
         if (!Wallet.Instance.TrySpendGold(CurrentPrice)) return;
         
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+
         PerkManager.Instance.UpgradePermanentPerk(PerkData.Id);
             
         ShowPriceAndStats();

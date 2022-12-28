@@ -8,15 +8,13 @@ public class GemDisplayer : Displayer
         Display(Wallet.Instance.Gem);
     }
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
-        
         Wallet.Instance.IsGemChanged += Display;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        Wallet.Instance.IsGoldChanged -= Display;
+        Wallet.Instance.IsGemChanged -= Display;
     }
 }

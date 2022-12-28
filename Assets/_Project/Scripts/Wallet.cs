@@ -10,26 +10,34 @@ public class Wallet : Singleton<Wallet>
     private int _gem;
     private float _experience;
 
-    public event UnityAction<float, bool> IsGoldChanged;
-    public event UnityAction<float, bool> IsGemChanged;
-    public event UnityAction<float, bool> IsExpChanged;
+    public event UnityAction<float> IsGoldChanged;
+    public event UnityAction<float> IsGemChanged;
+    public event UnityAction<float> IsExpChanged;
 
     public float Gold => _gold;
     public int Gem => _gem;
     public float Experience => _experience;
 
-    public void Init()
+    protected override void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public IEnumerator Load()
     {
         _gold = DataManager.Instance.Data.Gold;
         _gem = DataManager.Instance.Data.Gem;
-        
-        IsGoldChanged?.Invoke(_gold, false);
-        IsGemChanged?.Invoke(_gem, false);
-    }
-    
-    private void Start()
-    {
-        Init();
+
+        yield return null;
     }
 
     public bool TrySpendGold(int price)
@@ -41,7 +49,7 @@ public class Wallet : Singleton<Wallet>
             DataManager.Instance.Data.Gold = _gold;
             DataManager.Instance.Save();
 
-            IsGoldChanged?.Invoke(_gold, true);
+            IsGoldChanged?.Invoke(_gold);
 
             return true;
         }
@@ -57,7 +65,7 @@ public class Wallet : Singleton<Wallet>
         {
             _experience -= price;
 
-            IsExpChanged?.Invoke(_experience, true);
+            IsExpChanged?.Invoke(_experience);
             
             return true;
         }
@@ -74,20 +82,20 @@ public class Wallet : Singleton<Wallet>
         DataManager.Instance.Data.Gold = _gold;
         DataManager.Instance.Save();
         
-        IsGoldChanged?.Invoke(_gold, true);
+        IsGoldChanged?.Invoke(_gold);
     }
     
     public void AddExp(float value, bool isPerEnemy = true)
     {
         _experience += value * (1 + (isPerEnemy ? PerkManager.Instance.GetPerkLevel(PerkName.ExpPerEnemy) * 2 : PerkManager.Instance.GetPerkLevel(PerkName.ExpPerWave) * 10) * PerkManager.Instance.PerkMultiplier);
         
-        IsExpChanged?.Invoke(_experience, true);
+        IsExpChanged?.Invoke(_experience);
     }
 
     public void ResetExp()
     {
         _experience = 0;
         
-        IsExpChanged?.Invoke(_experience, false);
+        IsExpChanged?.Invoke(_experience);
     }
 }

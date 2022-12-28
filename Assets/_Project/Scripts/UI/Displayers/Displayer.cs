@@ -12,7 +12,7 @@ public abstract class Displayer : MonoBehaviour
 
     protected abstract void Init();
 
-    protected virtual void Start()
+    private void Start()
     {
         Init();
     }
@@ -35,7 +35,7 @@ public abstract class Displayer : MonoBehaviour
         }
     }
     
-    public void Display(float value, bool isAnimationNeeded = false)
+    public void Display(float value)
     {
         _currentValue = value;
 

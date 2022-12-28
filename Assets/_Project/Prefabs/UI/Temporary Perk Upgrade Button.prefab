@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8716047883359817792}
   - component: {fileID: 623141679616110065}
   - component: {fileID: 7125164758202153996}
+  - component: {fileID: 7782592905754982497}
   m_Layer: 5
   m_Name: Temporary Perk Upgrade Button
   m_TagString: Untagged
@@ -141,6 +142,20 @@ MonoBehaviour:
   _icon: {fileID: 1634456512756816106}
   MultiplierText: {fileID: 8458661433734346167}
   PriceText: {fileID: 5545999730655198478}
+  Button: {fileID: 623141679616110065}
+  CanvasGroup: {fileID: 7782592905754982497}
+--- !u!225 &7782592905754982497
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970055194823804269}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1051949541832142859
 GameObject:
   m_ObjectHideFlags: 0

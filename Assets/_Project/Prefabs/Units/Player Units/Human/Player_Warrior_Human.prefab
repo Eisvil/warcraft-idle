@@ -2916,14 +2916,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Attack Zone
       objectReference: {fileID: 0}
-    - target: {fileID: 7456347997854160784, guid: 0970d539e1e29a74f81e79b122b60058, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456347997854160784, guid: 0970d539e1e29a74f81e79b122b60058, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0970d539e1e29a74f81e79b122b60058, type: 3}
 --- !u!4 &4127944918358686244 stripped

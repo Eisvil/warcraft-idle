@@ -5,24 +5,27 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    private bool _isLoaded = false;
     private string _key = "Data";
     
     public Data Data;
 
     protected override void Awake()
     {
-        base.Awake();
-
-        StartCoroutine(Load());
+        if (Instance == null)
+        {
+            Instance = this;
+            
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator Load()
     {
-        if(_isLoaded) yield break;
-        
         Data = PlayerPrefs.HasKey(_key) ? JsonUtility.FromJson<Data>(PlayerPrefs.GetString(_key)) : new Data();
-        _isLoaded = true;
 
         yield return null;
     }

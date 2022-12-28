@@ -28,5 +28,4 @@ MonoBehaviour:
   PlayerTemplates:
   - {fileID: 4961184491632592710, guid: 52f6ca8ceb78b6a4480ac7f749622a48, type: 3}
   EnemyTemplates:
-  - {fileID: 6530524750487035075, guid: 30a900b51a3b0674295e8c3b8aab8d72, type: 3}
   - {fileID: 3757920099764697349, guid: 60d13c12ce56c6c49b25c3bc3aed9cbc, type: 3}

@@ -5,9 +5,25 @@ using UnityEngine;
 
 public class TemporaryPerkUpgradeButton : PerkUpgradeButton
 {
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        
+        Wallet.Instance.IsExpChanged += CheckBalance;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        
+        Wallet.Instance.IsExpChanged -= CheckBalance;
+    }
+
     public override void ShowPriceAndStats()
     {
         CurrentPrice = PerkManager.Instance.GetPerkPriceForExp(PerkData.Id);
+        
+        CheckBalance(Wallet.Instance.Experience);
 
         PriceText.text = CurrentPrice.ToString();
         
@@ -53,10 +69,10 @@ public class TemporaryPerkUpgradeButton : PerkUpgradeButton
 
     public override void TryUpgradePerk()
     {
-        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
-        
         if (!Wallet.Instance.TrySpendExp(CurrentPrice)) return;
         
+        SoundManager.Instance.PlaySound(SoundName.ButtonClick);
+
         PerkManager.Instance.UpgradeTemporaryPerk(PerkData.Id);
             
         ShowPriceAndStats();

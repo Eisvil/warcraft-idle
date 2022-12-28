@@ -8,17 +8,13 @@ public class GoldDisplayer : Displayer
         Display(Wallet.Instance.Gold);
     }
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-        
         Wallet.Instance.IsGoldChanged += Display;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Wallet.Instance.IsGoldChanged -= Display;
     }
-
-    
 }

@@ -55,7 +55,7 @@ public abstract class UnitSpawner<T> : MonoBehaviour where T: Unit
             {
                 var unit = Instantiate(template, transform);
                 
-                unit.Init(SelectedIds[i], UnitDataStorage.Instance.TryGetUnitBasicStats(i, SelectedUnitLevels[i]), _isEnemy);
+                unit.Init(SelectedIds[i], UnitDataStorage.Instance.TryGetUnitBasicStats(SelectedIds[i], SelectedUnitLevels[i]), _isEnemy);
 
                 Pool.Add(unit);
  

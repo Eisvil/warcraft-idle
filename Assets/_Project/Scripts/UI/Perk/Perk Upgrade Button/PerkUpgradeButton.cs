@@ -11,15 +11,15 @@ public abstract class PerkUpgradeButton : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] protected TMP_Text MultiplierText;
     [SerializeField] protected TMP_Text PriceText;
-
-    private Button _button;
+    [SerializeField] protected Button Button;
+    [SerializeField] protected CanvasGroup CanvasGroup;
     
     protected PerkData PerkData;
     protected int CurrentPrice;
 
     private void Awake()
     {
-        _button = GetComponent<Button>();
+        CanvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void Init(PerkData perkData)
@@ -32,16 +32,35 @@ public abstract class PerkUpgradeButton : MonoBehaviour
         ShowPriceAndStats();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        _button.onClick.AddListener(TryUpgradePerk);
+        Button.onClick.AddListener(TryUpgradePerk);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        _button.onClick.RemoveListener(TryUpgradePerk);
+        Button.onClick.RemoveListener(TryUpgradePerk);
     }
 
+    protected void SetActive(bool value)
+    {
+        if(value)
+        {
+            CanvasGroup.alpha = 1f;
+            CanvasGroup.blocksRaycasts = true;
+        }
+        else
+        {
+            CanvasGroup.alpha = 0.4f;
+            CanvasGroup.blocksRaycasts = false;
+        }
+    }
+
+    protected void CheckBalance(float value)
+    {
+        SetActive(value >= CurrentPrice);
+    }
+    
     public abstract void ShowPriceAndStats();
 
     public abstract void TryUpgradePerk();
