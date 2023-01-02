@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,17 @@ public abstract class TriggerZone : MonoBehaviour
     public void Init(float size)
     {
         transform.localScale = Vector3.one * size; 
+    }
+
+    private void CheckPool()
+    {
+        for (var i = 0; i < Units.Count; i++)
+        {
+            if (Units[i] == null)
+            {
+                Units.RemoveAt(i);
+            }
+        }
     }
     
     protected abstract void OnTriggerEnter(Collider other);
@@ -25,6 +37,8 @@ public abstract class TriggerZone : MonoBehaviour
     
     public virtual void RemoveUnit(Unit unit)
     {
+        if(!Units.Contains(unit)) return;
+            
         Units.Remove(unit);
     }
 
@@ -35,6 +49,8 @@ public abstract class TriggerZone : MonoBehaviour
     
     public Unit GetClosestEnemy(Vector3 unitPosition)
     {
+        CheckPool();
+        
         Unit closestUnit = null;
         var closestDistance = float.MaxValue;
         

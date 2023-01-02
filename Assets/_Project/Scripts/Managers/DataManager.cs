@@ -27,7 +27,7 @@ public class DataManager : Singleton<DataManager>
     {
         Data = PlayerPrefs.HasKey(_key) ? JsonUtility.FromJson<Data>(PlayerPrefs.GetString(_key)) : new Data();
 
-        yield return null;
+        yield return new WaitForSeconds(0.3f);
     }
 
     public void Save()

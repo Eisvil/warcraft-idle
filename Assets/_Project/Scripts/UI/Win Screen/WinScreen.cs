@@ -9,6 +9,6 @@ public class WinScreen : UIScreen
     {
         SoundManager.Instance.PlaySound(SoundName.ButtonClick);
         
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

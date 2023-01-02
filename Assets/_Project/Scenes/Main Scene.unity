@@ -12730,6 +12730,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33bc52b7f937fda409606a944f934346, type: 2}
   - {fileID: 11400000, guid: 8466f65b866bba442bea8f97c4230643, type: 2}
   - {fileID: 11400000, guid: a0b2f7d9ad05c5d42961ef748fb2efec, type: 2}
+  - {fileID: 11400000, guid: 59c587c021dc97b4eb68c1d07a71427f, type: 2}
 --- !u!4 &956827000
 Transform:
   m_ObjectHideFlags: 0
@@ -16979,7 +16980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35d2bbd59a0f6c4c95fa65f70748b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedUnitsId: 0000000003000000
+  _selectedUnitsId: 0000000004000000
   _selectedUnitLevels: 00000000000000000000000000000000
 --- !u!4 &1408229437
 Transform:

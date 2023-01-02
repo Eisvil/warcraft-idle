@@ -8,7 +8,7 @@ public class GoldDisplayer : Displayer
         Display(Wallet.Instance.Gold);
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Wallet.Instance.IsGoldChanged += Display;
     }

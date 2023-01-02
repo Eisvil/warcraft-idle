@@ -10,6 +10,8 @@ public class TemporaryPerkUpgradeButton : PerkUpgradeButton
         base.OnEnable();
         
         Wallet.Instance.IsExpChanged += CheckBalance;
+        
+        ShowPriceAndStats();
     }
 
     protected override void OnDisable()

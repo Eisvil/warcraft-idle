@@ -37,7 +37,7 @@ public class Wallet : Singleton<Wallet>
         _gold = DataManager.Instance.Data.Gold;
         _gem = DataManager.Instance.Data.Gem;
 
-        yield return null;
+        yield return new WaitForSeconds(0.3f);
     }
 
     public bool TrySpendGold(int price)

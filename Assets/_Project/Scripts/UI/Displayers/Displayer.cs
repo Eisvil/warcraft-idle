@@ -34,8 +34,8 @@ public abstract class Displayer : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
-    
-    public void Display(float value)
+
+    protected void Display(float value)
     {
         _currentValue = value;
 
