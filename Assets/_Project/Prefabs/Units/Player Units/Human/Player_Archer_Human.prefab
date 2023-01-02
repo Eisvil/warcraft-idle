@@ -1723,7 +1723,7 @@ GameObject:
   - component: {fileID: 155458338191926929}
   - component: {fileID: 5219865560489197319}
   - component: {fileID: 8956736120187461885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_Archer_Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ CapsuleCollider:
   m_Radius: 0.42549062
   m_Height: 1.7143815
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8571907, z: -0.006209135}
+  m_Center: {x: 0, y: 0.8571907, z: 0}
 --- !u!54 &155458338191926929
 Rigidbody:
   m_ObjectHideFlags: 0

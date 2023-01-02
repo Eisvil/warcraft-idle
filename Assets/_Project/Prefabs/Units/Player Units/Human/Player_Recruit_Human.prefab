@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 7713979433503381019}
   - component: {fileID: 4961184491632592710}
   - component: {fileID: 6279318051785367138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_Recruit_Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}

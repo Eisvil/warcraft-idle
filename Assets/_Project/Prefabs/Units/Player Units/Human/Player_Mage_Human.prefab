@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2233853575180367960}
   - component: {fileID: 9199119658127839519}
   - component: {fileID: 1438032116552273609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_Mage_Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -27,6 +27,8 @@ public class AttackState : State
         Unit.Animator.SetBool("Is_Attacking", true);
         Unit.Animator.speed = Unit.Stats.AttackSpeed;
 
+        Unit.gameObject.layer = LayerMask.NameToLayer("Attacking Unit");
+
         Unit.LookAtTarget();
     }
 
@@ -40,6 +42,8 @@ public class AttackState : State
 
         Unit.Animator.speed = 1f;
         Unit.Animator.SetBool("Is_Attacking", false);
+        
+        Unit.gameObject.layer = LayerMask.NameToLayer("Unit");
 
         base.Exit();
     }
