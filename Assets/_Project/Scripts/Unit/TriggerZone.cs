@@ -18,7 +18,7 @@ public abstract class TriggerZone : MonoBehaviour
     {
         for (var i = 0; i < Units.Count; i++)
         {
-            if (Units[i] == null)
+            if (Units[i] == null || !Units[i].gameObject.activeSelf)
             {
                 Units.RemoveAt(i);
             }
