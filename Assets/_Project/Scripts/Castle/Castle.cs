@@ -23,9 +23,9 @@ public class Castle : MonoBehaviour, IDamageable
     public void Init()
     {
         _maxHealth = 10 * (1 + PerkManager.Instance.GetPerkLevel(PerkName.CastleHealth) *
-            PerkManager.Instance.PerkMultiplier * 20);
+            PerkManager.Instance.PerkMultiplier * 10);
         _regenPerSecond = 0.5f * (1 + PerkManager.Instance.GetPerkLevel(PerkName.HealthRegen) *
-            PerkManager.Instance.PerkMultiplier * 8);
+            PerkManager.Instance.PerkMultiplier * 4);
         _currentHealth = _maxHealth;
         
         IsHealthChanged?.Invoke(false);
@@ -73,7 +73,7 @@ public class Castle : MonoBehaviour, IDamageable
                 var currentHealthNormalized = _currentHealth / _maxHealth;
                 
                 _maxHealth = 10 * (1 + PerkManager.Instance.GetPerkLevel(PerkName.CastleHealth) *
-                    PerkManager.Instance.PerkMultiplier * 20);
+                    PerkManager.Instance.PerkMultiplier * 10);
 
                 _currentHealth = _maxHealth * currentHealthNormalized;
                 
@@ -81,7 +81,7 @@ public class Castle : MonoBehaviour, IDamageable
                 break;
             case PerkName.HealthRegen:
                 _regenPerSecond = 0.5f * (1 + PerkManager.Instance.GetPerkLevel(PerkName.HealthRegen) *
-                    PerkManager.Instance.PerkMultiplier * 8);
+                    PerkManager.Instance.PerkMultiplier * 4);
                 break;
         }
     }

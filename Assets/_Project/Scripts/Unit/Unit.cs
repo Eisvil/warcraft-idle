@@ -36,11 +36,11 @@ public abstract class Unit : MonoBehaviour, IDamageable
                 stats.Damage = _baseStats.Damage *
                                (1 + PerkManager.GetPerkLevel(PerkName.Damage) * PerkManager.PerkMultiplier);
                 stats.CritChance = _baseStats.CritChance *
-                                   (1 + PerkManager.GetPerkLevel(PerkName.CritChance) * PerkManager.PerkMultiplier);
+                                   (1 + PerkManager.GetPerkLevel(PerkName.CritChance) * PerkManager.PerkMultiplier * 10);
                 stats.CritMultiplier = _baseStats.CritMultiplier *
-                                       (1 + PerkManager.GetPerkLevel(PerkName.CritMultiplier) * PerkManager.PerkMultiplier);
+                                       (1 + PerkManager.GetPerkLevel(PerkName.CritMultiplier) * PerkManager.PerkMultiplier * 2);
                 stats.AttackSpeed = _baseStats.AttackSpeed *
-                                    (1 + PerkManager.GetPerkLevel(PerkName.AttackSpeed) * PerkManager.PerkMultiplier);
+                                    (1 + PerkManager.GetPerkLevel(PerkName.AttackSpeed) * PerkManager.PerkMultiplier / 2.5f);
                 stats.MoveSpeed = _baseStats.MoveSpeed *
                                   (1 + PerkManager.GetPerkLevel(PerkName.MoveSpeed) * PerkManager.PerkMultiplier);
                 stats.AttackRange = _baseStats.AttackRange;
@@ -52,11 +52,11 @@ public abstract class Unit : MonoBehaviour, IDamageable
                 stats.Damage = _baseStats.Damage *
                                (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
                 stats.CritChance = _baseStats.CritChance *
-                                   (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                                   (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier * 10);
                 stats.CritMultiplier = _baseStats.CritMultiplier *
-                                       (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                                       (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier * 2);
                 stats.AttackSpeed = _baseStats.AttackSpeed *
-                                    (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
+                                    (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier / 2.5f);
                 stats.MoveSpeed = _baseStats.MoveSpeed *
                                   (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier);
                 stats.ExpReward = _baseStats.ExpReward * (1 + LevelManager.Instance.CurrentWave.UnitPerksLevel * PerkManager.PerkMultiplier * 2);

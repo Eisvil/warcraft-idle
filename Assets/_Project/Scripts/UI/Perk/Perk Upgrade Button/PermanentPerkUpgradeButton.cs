@@ -32,34 +32,49 @@ public class PermanentPerkUpgradeButton : PerkUpgradeButton
         switch (PerkData.Id)
         {
             case PerkName.CastleHealth:
-                perkMultiplier *= 20;
+                perkMultiplier *= 10f;
                 
                 MultiplierText.text = (10 * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
                 break;
             case PerkName.HealthRegen:
-                perkMultiplier *= 8;
+                perkMultiplier *= 4f;
                 
                 MultiplierText.text = (0.5f * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
                 break;
             case PerkName.ExpPerEnemy:
-                perkMultiplier *= 2;
+                perkMultiplier *= 2f;
                 
                 MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
                 break;
             case PerkName.GoldMining:
-                perkMultiplier *= 2;
+                perkMultiplier /= 2.5f;
                 
                 MultiplierText.text = (1 * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
                 break;
             case PerkName.GoldPerWave:
-                perkMultiplier *= 10;
+                perkMultiplier *= 20f;
                 
                 MultiplierText.text = (LevelManager.Instance.GoldRewardForWave * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
                 break;
             case PerkName.ExpPerWave:
-                perkMultiplier *= 10;
+                perkMultiplier *= 20f;
                 
                 MultiplierText.text = (LevelManager.Instance.ExpRewardForWave * (1 + PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier)).ToString();
+                break;
+            case PerkName.AttackSpeed:
+                perkMultiplier /= 2.5f;
+                
+                MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
+                break;
+            case PerkName.CritChance:
+                perkMultiplier *= 10f;
+                
+                MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
+                break;
+            case PerkName.CritMultiplier:
+                perkMultiplier *= 2f;
+                
+                MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
                 break;
             default:
                 MultiplierText.text = (PerkManager.Instance.GetPermanentPerkLevel(PerkData.Id) * perkMultiplier * 100) + "%";
