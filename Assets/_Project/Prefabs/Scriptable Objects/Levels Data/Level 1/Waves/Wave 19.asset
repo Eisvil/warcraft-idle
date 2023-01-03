@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Wave 19
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   Type: 0
-  UnitIds: 0000000001000000
+  UnitIds: 00000000010000000200000003000000
   UnitsSpawnTime:
-  - 1.5
+  - 2
   - 8
-  ExpReward: 
+  - 7
+  - 14
   UnitPerksLevel: 9

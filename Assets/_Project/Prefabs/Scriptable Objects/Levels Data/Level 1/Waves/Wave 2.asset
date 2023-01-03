@@ -16,6 +16,5 @@ MonoBehaviour:
   UnitIds: 0000000001000000
   UnitsSpawnTime:
   - 3
-  - 15
+  - 10
   UnitPerksLevel: 0
-  ExpReward: 2
