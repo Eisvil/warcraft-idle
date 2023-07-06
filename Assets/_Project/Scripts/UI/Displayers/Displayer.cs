@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-
 public abstract class Displayer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;

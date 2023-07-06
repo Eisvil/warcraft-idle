@@ -11,8 +11,8 @@ public class PlayerUnitSpawner : UnitSpawner<PlayerUnit>
     public void Init()
     {
         SelectedIds = PlayerDeckManager.Instance.SelectedUnitsId;
-        SelectedUnitLevels = PlayerDeckManager.Instance.SelectedUnitLevels;
-        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetPlayerUnit(unitId, UnitRace.Human)).ToList();
+        SelectedUnitLevels = PlayerDeckManager.Instance.GetSelectedUnitLevels();
+        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetPlayerUnit(unitId)).ToList();
         PoolSizes = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetUnitPoolSize(unitId, 0)).ToList();
         UnitsSpawnTime = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetUnitSpawnTime(unitId, 0)).ToArray();
         UnitsTimer = new float[UnitsSpawnTime.Length];

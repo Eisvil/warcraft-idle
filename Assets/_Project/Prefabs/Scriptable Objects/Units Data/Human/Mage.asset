@@ -25,7 +25,7 @@ MonoBehaviour:
   PoolSize: 01000000
   UnitsSpawnTime:
   - 7
-  PlayerTemplates:
-  - {fileID: 9199119658127839519, guid: fa5b58b93c1bea040a819c1b5d04dba1, type: 3}
-  EnemyTemplates:
-  - {fileID: 4572137960487335290, guid: 814914810eb7cc94bb370109a1ad61ea, type: 3}
+  PlayerTemplate: {fileID: 9199119658127839519, guid: fa5b58b93c1bea040a819c1b5d04dba1, type: 3}
+  EnemyTemplate: {fileID: 4572137960487335290, guid: c542e41f80fd0c54eb858a8dd4774031, type: 3}
+  Name: 
+  Icon: {fileID: 0}

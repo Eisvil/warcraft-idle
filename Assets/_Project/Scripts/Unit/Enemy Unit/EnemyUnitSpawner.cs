@@ -17,7 +17,7 @@ public class EnemyUnitSpawner : UnitSpawner<EnemyUnit>
     {
         SelectedIds = waveData.UnitIds;
         SelectedUnitLevels = new int[waveData.UnitIds.Length];
-        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetEnemyUnit(unitId, UnitRace.Undead)).ToList();
+        Templates = SelectedIds.Select(unitId => UnitDataStorage.Instance.TryGetEnemyUnit(unitId)).ToList();
 
         PoolSizes = new List<int>();
         

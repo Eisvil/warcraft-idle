@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ae37d2dfe29b0d42b71563b817b1e5a, type: 3}
-  m_Name: Recruit
+  m_Name: Hero
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 9
   BasicStats:
-  - MaxHealth: 3
-    Damage: 2
-    CritChance: 2
+  - MaxHealth: 50
+    Damage: 5
+    CritChance: 4
     CritMultiplier: 1.5
-    AttackSpeed: 0.95
+    AttackSpeed: 1
     AttackRange: 1
-    MoveSpeed: 1
-    ExpReward: 1
-  PoolSize: 02000000
+    MoveSpeed: 0.7
+    ExpReward: 150
+  PoolSize: 01000000
   UnitsSpawnTime:
-  - 1
-  PlayerTemplates:
-  - {fileID: 4961184491632592710, guid: 52f6ca8ceb78b6a4480ac7f749622a48, type: 3}
-  EnemyTemplates:
-  - {fileID: 3757920099764697349, guid: 60d13c12ce56c6c49b25c3bc3aed9cbc, type: 3}
+  - 0
+  PlayerTemplate: {fileID: 0}
+  EnemyTemplate: {fileID: 5886420359099476551, guid: 065ca9837ca7b6c4f8db24f1090ec586, type: 3}
+  Name: 
+  Icon: {fileID: 0}

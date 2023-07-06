@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ae37d2dfe29b0d42b71563b817b1e5a, type: 3}
-  m_Name: Hero
+  m_Name: Archer
   m_EditorClassIdentifier: 
-  Id: 4
+  Id: 7
   BasicStats:
-  - MaxHealth: 50
-    Damage: 5
-    CritChance: 4
+  - MaxHealth: 1
+    Damage: 2
+    CritChance: 3
     CritMultiplier: 1.5
-    AttackSpeed: 1
-    AttackRange: 1
-    MoveSpeed: 0.7
-    ExpReward: 150
-  PoolSize: 01000000
+    AttackSpeed: 1.2
+    AttackRange: 5
+    MoveSpeed: 1
+    ExpReward: 2
+  PoolSize: 02000000
   UnitsSpawnTime:
-  - 0
-  PlayerTemplates:
-  - {fileID: 6920748646672924434, guid: 13c330e3fc5a77045b531d9ca5158ab9, type: 3}
-  EnemyTemplates:
-  - {fileID: 5886420359099476551, guid: 065ca9837ca7b6c4f8db24f1090ec586, type: 3}
+  - 3
+  PlayerTemplate: {fileID: 0}
+  EnemyTemplate: {fileID: 5716638963098938221, guid: 1a687bf35069e9a45b61bd2296890bfe, type: 3}
+  Name: 
+  Icon: {fileID: 0}

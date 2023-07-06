@@ -47,6 +47,9 @@ public class Data
     public float Gold;
     public int Gem;
     public int[] PermanentPerkLevels;
+    public List<int> UnlockedUnitIds;
+    public List<int> SelectedUnitIds;
+    public List<int> UnlockedUnitLevels;
     public int SoundVolume;
     public int MusicVolume;
 
@@ -55,6 +58,9 @@ public class Data
         Gold = 0f;
         Gem = 0;
         PermanentPerkLevels = new int[Enum.GetNames(typeof(PerkName)).Length];
+        UnlockedUnitIds = new List<int> { 0 };
+        SelectedUnitIds = new List<int> { 0 };
+        UnlockedUnitLevels = new List<int> { 0 };
         SoundVolume = 8;
         MusicVolume = 8;
     }
